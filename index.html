@@ -21,37 +21,26 @@
       padding: 80px 20px 50px 20px;
       border-bottom: 1px solid #eaeaea;
       overflow: hidden;
-
       background: linear-gradient(135deg, #ffffff 60%, #f3f6fb);
     }
 
-    /* 🧬 GUARANTEED VISIBLE NETWORK (INLINE SVG) */
+    /* 🧬 FIXED NETWORK (WORKING SVG DATA URI) */
     .hero-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.9;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.9;
 
-  background-image: url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' width='900' height='400'>\
-    <!-- edges -->\
-    <line x1='120' y1='150' x2='300' y2='90' stroke='black' stroke-width='3'/>\
-    <line x1='300' y1='90' x2='500' y2='180' stroke='black' stroke-width='3'/>\
-    <line x1='500' y1='180' x2='700' y2='120' stroke='black' stroke-width='3'/>\
-    <line x1='300' y1='90' x2='450' y2='260' stroke='black' stroke-width='3'/>\
-    <line x1='450' y1='260' x2='700' y2='120' stroke='black' stroke-width='3'/>\
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='400'><line x1='120' y1='150' x2='300' y2='90' stroke='black' stroke-width='3'/><line x1='300' y1='90' x2='500' y2='180' stroke='black' stroke-width='3'/><line x1='500' y1='180' x2='700' y2='120' stroke='black' stroke-width='3'/><line x1='300' y1='90' x2='450' y2='260' stroke='black' stroke-width='3'/><line x1='450' y1='260' x2='700' y2='120' stroke='black' stroke-width='3'/><circle cx='120' cy='150' r='10' fill='black'/><circle cx='300' cy='90' r='10' fill='black'/><circle cx='500' cy='180' r='10' fill='black'/><circle cx='700' cy='120' r='10' fill='black'/><circle cx='450' cy='260' r='10' fill='black'/></svg>");
 
-    <!-- nodes -->\
-    <circle cx='120' cy='150' r='10' fill='black'/>\
-    <circle cx='300' cy='90' r='10' fill='black'/>\
-    <circle cx='500' cy='180' r='10' fill='black'/>\
-    <circle cx='700' cy='120' r='10' fill='black'/>\
-    <circle cx='450' cy='260' r='10' fill='black'/>\
-  </svg>");
+      background-size: cover;
+      background-position: center;
+    }
 
-  background-size: cover;
-  background-position: center;
-}
+    .hero-text {
+      position: relative;
+    }
+
     h1 {
       font-size: 40px;
       margin-bottom: 5px;
