@@ -15,33 +15,33 @@
       background: #ffffff;
     }
 
-    /* 🔷 HERO */
+    /* 🔷 HERO SECTION */
     .hero {
       position: relative;
       padding: 80px 20px 50px 20px;
       border-bottom: 1px solid #eaeaea;
       overflow: hidden;
 
-      /* IMPORTANT: gives background depth so image is visible */
-      background: linear-gradient(135deg, #ffffff 55%, #f3f6fb);
+      /* subtle background tint so image is visible */
+      background: linear-gradient(135deg, #ffffff 60%, #f3f6fb);
     }
 
-    /* 🧬 NETWORK BACKGROUND */
+    /* 🧬 NETWORK BACKGROUND (FIXED — visible version) */
     .hero-overlay {
       position: absolute;
       inset: 0;
 
       background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Social_Network_Analysis_Visualization.png/1200px-Social_Network_Analysis_Visualization.png");
-      background-size: 130%;
+      background-size: cover;
       background-position: center;
 
-      opacity: 0.55;
+      opacity: 0.40;
 
-      /* makes graph pop instead of fading away */
-      filter: contrast(1.4) brightness(1.1);
+      /* IMPORTANT: no blending tricks */
+      mix-blend-mode: normal;
 
-      /* integrates with background */
-      mix-blend-mode: multiply;
+      /* makes structure pop clearly */
+      filter: contrast(1.25) brightness(0.95);
 
       pointer-events: none;
     }
