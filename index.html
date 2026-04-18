@@ -1,99 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jose Bird</title>
+  <title>Jose Bird | RegNetAgents</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 850px;
+      font-family: Georgia, "Times New Roman", serif;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0;
-      line-height: 1.6;
-      color: #1a1a1a;
+      color: #111;
       background: #ffffff;
+      line-height: 1.6;
     }
 
-    /* 🔷 HERO */
     .hero {
-      position: relative;
-      padding: 80px 20px 50px 20px;
-      border-bottom: 1px solid #eaeaea;
-      overflow: hidden;
-      background: linear-gradient(135deg, #ffffff 60%, #f3f6fb);
-    }
-
-    /* 🧬 FIXED NETWORK (WORKING SVG DATA URI) */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.9;
-
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='400'><line x1='120' y1='150' x2='300' y2='90' stroke='black' stroke-width='3'/><line x1='300' y1='90' x2='500' y2='180' stroke='black' stroke-width='3'/><line x1='500' y1='180' x2='700' y2='120' stroke='black' stroke-width='3'/><line x1='300' y1='90' x2='450' y2='260' stroke='black' stroke-width='3'/><line x1='450' y1='260' x2='700' y2='120' stroke='black' stroke-width='3'/><circle cx='120' cy='150' r='10' fill='black'/><circle cx='300' cy='90' r='10' fill='black'/><circle cx='500' cy='180' r='10' fill='black'/><circle cx='700' cy='120' r='10' fill='black'/><circle cx='450' cy='260' r='10' fill='black'/></svg>");
-
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero-text {
-      position: relative;
+      padding: 60px 20px 30px 20px;
+      border-bottom: 1px solid #e5e5e5;
     }
 
     h1 {
-      font-size: 40px;
+      font-size: 34px;
       margin-bottom: 5px;
+      letter-spacing: -0.5px;
     }
 
     .subtitle {
-      font-size: 16px;
       color: #555;
+      font-size: 15px;
+      margin-bottom: 25px;
     }
 
-    .content {
-      max-width: 850px;
-      margin: 0 auto;
+    /* 🧭 FIGURE STYLE */
+    .figure {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+    }
+
+    .caption {
+      font-size: 13px;
+      color: #444;
+      margin-top: 8px;
+    }
+
+    .section {
       padding: 20px;
     }
 
     h2 {
+      font-size: 20px;
       margin-top: 40px;
-      font-size: 22px;
       border-bottom: 1px solid #eee;
       padding-bottom: 5px;
     }
 
+    p {
+      font-size: 15px;
+    }
+
     .card {
-      border: 1px solid #eaeaea;
-      border-radius: 10px;
-      padding: 16px 18px;
+      border: 1px solid #e5e5e5;
+      padding: 15px;
       margin-top: 15px;
       background: #fafafa;
     }
 
-    .card a {
+    a {
       color: #1a73e8;
       text-decoration: none;
     }
 
-    .card a:hover {
+    a:hover {
       text-decoration: underline;
     }
 
-    .icon {
-      font-size: 18px;
-      margin-right: 6px;
-    }
-
-    .contact {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .small {
-      color: #666;
-      font-size: 13px;
+    .footer {
+      font-size: 12px;
+      color: #777;
       margin-top: 40px;
     }
   </style>
@@ -101,65 +87,105 @@
 
 <body>
 
-<!-- 🔷 HERO -->
 <div class="hero">
-  <div class="hero-overlay"></div>
+  <h1>Jose Bird, PhD</h1>
+  <div class="subtitle">
+    AI Systems for Regulatory Network Inference and Multi-Agent Reasoning
+  </div>
 
-  <div class="hero-text">
-    <h1>Jose Bird, PhD</h1>
-    <div class="subtitle">
-      AI Systems | Regulatory Networks | Multi-Agent Frameworks
+  <!-- 🧭 FIGURE -->
+  <div class="figure">
+    <svg viewBox="0 0 900 300" width="100%" height="250">
+
+      <!-- arrows -->
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L6,3 z" fill="#222"/>
+        </marker>
+      </defs>
+
+      <!-- boxes -->
+      <rect x="20" y="110" width="150" height="70" fill="#ffffff" stroke="#333"/>
+      <rect x="210" y="110" width="180" height="70" fill="#ffffff" stroke="#333"/>
+      <rect x="430" y="110" width="180" height="70" fill="#ffffff" stroke="#333"/>
+      <rect x="650" y="110" width="200" height="70" fill="#ffffff" stroke="#333"/>
+
+      <!-- labels -->
+      <text x="30" y="140" font-size="13">Data Sources</text>
+      <text x="30" y="160" font-size="12">(TCGA, Single-Cell)</text>
+
+      <text x="220" y="140" font-size="13">Regulatory Network</text>
+      <text x="220" y="160" font-size="12">Inference</text>
+
+      <text x="440" y="140" font-size="13">Cascade / Propagation</text>
+      <text x="440" y="160" font-size="12">Modeling</text>
+
+      <text x="660" y="140" font-size="13">Multi-Agent Reasoning</text>
+      <text x="660" y="160" font-size="12">Driver Identification</text>
+
+      <!-- arrows -->
+      <line x1="170" y1="145" x2="210" y2="145" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="390" y1="145" x2="430" y2="145" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="610" y1="145" x2="650" y2="145" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
+
+    </svg>
+
+    <div class="caption">
+      Figure 1. RegNetAgents framework: multi-stage inference pipeline integrating regulatory network construction,
+      cascade-based signal propagation, and multi-agent reasoning for driver identification.
     </div>
   </div>
 </div>
 
-<div class="content">
+<div class="section">
 
 <h2>About</h2>
 <p>
-I build AI-driven frameworks for analyzing complex regulatory networks, focusing on multi-agent systems, cross-network inference, and cascade-based signal propagation in high-dimensional systems.
+I develop AI frameworks for structured reasoning over biological regulatory networks, integrating graph-based inference,
+cascade propagation modeling, and multi-agent systems for identifying regulatory drivers.
 </p>
 
 <h2>Core Work</h2>
 
 <div class="card">
-  <span class="icon">🧠</span><b>RegNetAgents</b><br>
-  Multi-agent framework for regulatory driver identification across heterogeneous networks.<br><br>
+<b>RegNetAgents</b><br>
+A multi-agent framework for regulatory driver identification across heterogeneous biological networks.<br><br>
 
-  <b>DOI (Citable Artifact):</b><br>
-  <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">
-    https://doi.org/10.5281/zenodo.18500027
-  </a><br><br>
+<b>DOI:</b><br>
+<a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">
+https://doi.org/10.5281/zenodo.18500027
+</a><br><br>
 
-  <b>Code:</b><br>
-  <a href="https://github.com/jab57/regnetagents" target="_blank">
-    GitHub Repository →
-  </a>
+<b>Code:</b><br>
+<a href="https://github.com/jab57/regnetagents" target="_blank">
+GitHub Repository →
+</a>
 </div>
 
 <div class="card">
-  <span class="icon">🔬</span><b>Cascade / Propagation Analysis</b><br>
-  Modeling signal flow across regulatory networks to identify upstream drivers and downstream effects.
+<b>Cascade / Propagation Modeling</b><br>
+Modeling signal flow across regulatory networks to identify upstream regulators and downstream effects.
 </div>
 
 <div class="card">
-  <span class="icon">🌐</span><b>Multi-Agent AI Systems</b><br>
-  Agent-based reasoning over complex graph structures and modular inference pipelines.
+<b>Multi-Agent AI Systems</b><br>
+Agent-based reasoning frameworks for structured inference across complex graph systems.
 </div>
 
 <h2>Focus</h2>
 <p>
-Advancing AI frameworks for network-level reasoning, including regulatory cascade modeling and cross-system integration.
+Advancing AI-driven methodologies for network-level reasoning, with emphasis on integrating regulatory inference,
+cascade dynamics, and modular multi-agent architectures.
 </p>
 
 <h2>Contact</h2>
-<div class="contact">
+<p>
 jbird@birdaisolutions.com
-</div>
-
-<p class="small">
-Bird AI Solutions
 </p>
+
+<div class="footer">
+Bird AI Solutions
+</div>
 
 </div>
 
