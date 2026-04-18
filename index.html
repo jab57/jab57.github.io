@@ -23,7 +23,6 @@
     h1 {
       font-size: 34px;
       margin-bottom: 5px;
-      letter-spacing: -0.5px;
     }
 
     .subtitle {
@@ -32,7 +31,6 @@
       margin-bottom: 25px;
     }
 
-    /* Figure container */
     .figure {
       margin-top: 20px;
       padding: 15px;
@@ -93,7 +91,7 @@
     AI Systems for Regulatory Network Inference and Multi-Agent Reasoning
   </div>
 
-  <!-- SYSTEM DIAGRAM -->
+  <!-- FIGURE 1: SYSTEM -->
   <div class="figure">
     <svg viewBox="0 0 900 300" width="100%" height="250">
 
@@ -103,13 +101,11 @@
         </marker>
       </defs>
 
-      <!-- boxes -->
       <rect x="20" y="110" width="150" height="70" fill="#fff" stroke="#333"/>
       <rect x="210" y="110" width="180" height="70" fill="#fff" stroke="#333"/>
       <rect x="430" y="110" width="180" height="70" fill="#fff" stroke="#333"/>
       <rect x="650" y="110" width="200" height="70" fill="#fff" stroke="#333"/>
 
-      <!-- text -->
       <text x="30" y="140" font-size="13">Data Sources</text>
       <text x="30" y="160" font-size="12">(TCGA, Single-Cell)</text>
 
@@ -122,7 +118,6 @@
       <text x="660" y="140" font-size="13">Multi-Agent Reasoning</text>
       <text x="660" y="160" font-size="12">Driver Identification</text>
 
-      <!-- arrows -->
       <line x1="170" y1="145" x2="210" y2="145" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
       <line x1="390" y1="145" x2="430" y2="145" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
       <line x1="610" y1="145" x2="650" y2="145" stroke="#222" stroke-width="2" marker-end="url(#arrow)"/>
@@ -130,25 +125,65 @@
     </svg>
 
     <div class="caption">
-      Figure 1. RegNetAgents framework: multi-stage inference pipeline integrating regulatory network construction,
-      cascade-based signal propagation, and multi-agent reasoning for driver identification.
+      Figure 1. RegNetAgents framework: multi-stage pipeline integrating network inference,
+      cascade modeling, and multi-agent reasoning.
     </div>
   </div>
+
+  <!-- FIGURE 2: CASCADE RESULT -->
+  <div class="figure">
+    <svg viewBox="0 0 900 300" width="100%" height="250">
+
+      <defs>
+        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L6,3 z" fill="#444"/>
+        </marker>
+      </defs>
+
+      <!-- upstream driver -->
+      <circle cx="150" cy="150" r="15" fill="#111"/>
+      <text x="135" y="180" font-size="12">Driver</text>
+
+      <!-- downstream nodes -->
+      <circle cx="350" cy="80" r="10" fill="#777"/>
+      <circle cx="350" cy="150" r="10" fill="#777"/>
+      <circle cx="350" cy="220" r="10" fill="#777"/>
+
+      <!-- further propagation -->
+      <circle cx="550" cy="110" r="8" fill="#aaa"/>
+      <circle cx="550" cy="190" r="8" fill="#aaa"/>
+
+      <!-- edges -->
+      <line x1="165" y1="150" x2="340" y2="80" stroke="#444" stroke-width="2" marker-end="url(#arrow2)"/>
+      <line x1="165" y1="150" x2="340" y2="150" stroke="#444" stroke-width="2" marker-end="url(#arrow2)"/>
+      <line x1="165" y1="150" x2="340" y2="220" stroke="#444" stroke-width="2" marker-end="url(#arrow2)"/>
+
+      <line x1="360" y1="80" x2="540" y2="110" stroke="#aaa" stroke-width="1.5"/>
+      <line x1="360" y1="220" x2="540" y2="190" stroke="#aaa" stroke-width="1.5"/>
+
+    </svg>
+
+    <div class="caption">
+      Figure 2. Example cascade propagation: upstream regulatory driver influences multiple downstream nodes,
+      propagating signals across the network and enabling identification of key regulatory effects.
+    </div>
+  </div>
+
 </div>
 
 <div class="section">
 
 <h2>About</h2>
 <p>
-I develop AI frameworks for structured reasoning over biological regulatory networks, integrating graph-based inference,
-cascade propagation modeling, and multi-agent systems for identifying regulatory drivers.
+I develop AI frameworks for structured reasoning over biological regulatory networks,
+integrating graph-based inference, cascade propagation modeling, and multi-agent systems.
 </p>
 
 <h2>Core Work</h2>
 
 <div class="card">
 <b>RegNetAgents</b><br>
-A multi-agent framework for regulatory driver identification across heterogeneous biological networks.<br><br>
+Multi-agent framework for regulatory driver identification.<br><br>
 
 <b>DOI:</b><br>
 <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">
@@ -162,25 +197,17 @@ GitHub Repository →
 </div>
 
 <div class="card">
-<b>Cascade / Propagation Modeling</b><br>
-Modeling signal flow across regulatory networks to identify upstream regulators and downstream effects.
+<b>Cascade Modeling</b><br>
+Identifying upstream drivers and downstream effects in regulatory networks.
 </div>
 
 <div class="card">
-<b>Multi-Agent AI Systems</b><br>
-Agent-based reasoning frameworks for structured inference across complex graph systems.
+<b>Multi-Agent Systems</b><br>
+Structured reasoning across complex graph-based biological systems.
 </div>
 
-<h2>Focus</h2>
-<p>
-Advancing AI-driven methodologies for network-level reasoning, integrating regulatory inference,
-cascade dynamics, and modular multi-agent architectures.
-</p>
-
 <h2>Contact</h2>
-<p>
-jbird@birdaisolutions.com
-</p>
+<p>jbird@birdaisolutions.com</p>
 
 <div class="footer">
 Bird AI Solutions
