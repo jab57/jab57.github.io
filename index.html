@@ -15,24 +15,34 @@
       background: #ffffff;
     }
 
-    /* 🔷 HERO SECTION */
+    /* 🔷 HERO */
     .hero {
       position: relative;
       padding: 80px 20px 50px 20px;
       border-bottom: 1px solid #eaeaea;
       overflow: hidden;
-      background: #ffffff;
+
+      /* IMPORTANT: gives background depth so image is visible */
+      background: linear-gradient(135deg, #ffffff 55%, #f3f6fb);
     }
 
-    /* 🧬 Gene/network background */
+    /* 🧬 NETWORK BACKGROUND */
     .hero-overlay {
       position: absolute;
       inset: 0;
+
       background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Social_Network_Analysis_Visualization.png/1200px-Social_Network_Analysis_Visualization.png");
-      background-size: 110%;
+      background-size: 130%;
       background-position: center;
-      opacity: 0.28;
-      filter: contrast(1.2) brightness(1.05);
+
+      opacity: 0.55;
+
+      /* makes graph pop instead of fading away */
+      filter: contrast(1.4) brightness(1.1);
+
+      /* integrates with background */
+      mix-blend-mode: multiply;
+
       pointer-events: none;
     }
 
