@@ -13,12 +13,6 @@
       color: #111;
       background: #ffffff;
       line-height: 1.6;
-      animation: fadeIn 1s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     .hero {
@@ -26,16 +20,8 @@
       border-bottom: 1px solid #e5e5e5;
     }
 
-    h1 {
-      font-size: 34px;
-      margin-bottom: 5px;
-    }
-
-    .subtitle {
-      color: #555;
-      font-size: 15px;
-      margin-bottom: 25px;
-    }
+    h1 { font-size: 34px; margin-bottom: 5px; }
+    .subtitle { color: #555; font-size: 15px; margin-bottom: 25px; }
 
     .figure {
       margin-top: 20px;
@@ -50,9 +36,7 @@
       margin-top: 8px;
     }
 
-    .section {
-      padding: 20px;
-    }
+    .section { padding: 20px; }
 
     h2 {
       font-size: 20px;
@@ -61,9 +45,7 @@
       padding-bottom: 5px;
     }
 
-    p {
-      font-size: 15px;
-    }
+    p { font-size: 15px; }
 
     .card {
       border: 1px solid #e5e5e5;
@@ -77,9 +59,7 @@
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    a:hover { text-decoration: underline; }
 
     .footer {
       font-size: 12px;
@@ -87,15 +67,30 @@
       margin-top: 40px;
     }
 
-    /* 🔥 INTERACTIVITY */
-    .node:hover {
-      opacity: 0.7;
-      cursor: pointer;
+    /* 🧪 OUTPUT FIGURE STYLE */
+    .output {
+      font-family: "Courier New", monospace;
+      font-size: 12.5px;
+      white-space: pre-wrap;
+      background: #0f1115;
+      color: #d6d6d6;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
     }
 
-    .box:hover {
-      filter: brightness(1.1);
-      cursor: pointer;
+    .tag {
+      color: #8ab4f8;
+      font-weight: bold;
+    }
+
+    .highlight {
+      color: #fbbc04;
+    }
+
+    .driver {
+      color: #ff6b6b;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -118,16 +113,11 @@
         </marker>
       </defs>
 
-      <!-- clickable boxes -->
-      <a href="https://github.com/jab57/regnetagents" target="_blank">
-        <rect class="box" x="650" y="110" width="200" height="70" fill="#f3e5f5" stroke="#8e24aa"/>
-      </a>
+      <rect x="20" y="110" width="150" height="70" fill="#e3f2fd" stroke="#1e88e5"/>
+      <rect x="210" y="110" width="180" height="70" fill="#e8f5e9" stroke="#43a047"/>
+      <rect x="430" y="110" width="180" height="70" fill="#fff3e0" stroke="#fb8c00"/>
+      <rect x="650" y="110" width="200" height="70" fill="#f3e5f5" stroke="#8e24aa"/>
 
-      <rect class="box" x="20" y="110" width="150" height="70" fill="#e3f2fd" stroke="#1e88e5"/>
-      <rect class="box" x="210" y="110" width="180" height="70" fill="#e8f5e9" stroke="#43a047"/>
-      <rect class="box" x="430" y="110" width="180" height="70" fill="#fff3e0" stroke="#fb8c00"/>
-
-      <!-- labels -->
       <text x="30" y="140" font-size="13">Data Sources</text>
       <text x="30" y="160" font-size="12">(TCGA, Single-Cell)</text>
 
@@ -140,7 +130,6 @@
       <text x="660" y="140" font-size="13">Multi-Agent Reasoning</text>
       <text x="660" y="160" font-size="12">Driver Identification</text>
 
-      <!-- arrows -->
       <line x1="170" y1="145" x2="210" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
       <line x1="390" y1="145" x2="430" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
       <line x1="610" y1="145" x2="650" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
@@ -148,7 +137,7 @@
     </svg>
 
     <div class="caption">
-      Figure 1. RegNetAgents framework. Click the final module to view the implementation.
+      Figure 1. RegNetAgents system architecture.
     </div>
   </div>
 
@@ -162,22 +151,16 @@
         </marker>
       </defs>
 
-      <!-- clickable driver -->
-      <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">
-        <circle class="node" cx="150" cy="150" r="16" fill="#d32f2f"/>
-      </a>
-
+      <circle cx="150" cy="150" r="16" fill="#d32f2f"/>
       <text x="130" y="185" font-size="12">Driver</text>
 
-      <!-- cascade nodes -->
-      <circle class="node" cx="350" cy="80" r="10" fill="#fb8c00"/>
-      <circle class="node" cx="350" cy="150" r="10" fill="#fb8c00"/>
-      <circle class="node" cx="350" cy="220" r="10" fill="#fb8c00"/>
+      <circle cx="350" cy="80" r="10" fill="#fb8c00"/>
+      <circle cx="350" cy="150" r="10" fill="#fb8c00"/>
+      <circle cx="350" cy="220" r="10" fill="#fb8c00"/>
 
       <circle cx="550" cy="110" r="8" fill="#bbb"/>
       <circle cx="550" cy="190" r="8" fill="#bbb"/>
 
-      <!-- edges -->
       <line x1="166" y1="150" x2="340" y2="80" stroke="#fb8c00" stroke-width="2.5" marker-end="url(#arrow2)"/>
       <line x1="166" y1="150" x2="340" y2="150" stroke="#fb8c00" stroke-width="2.5" marker-end="url(#arrow2)"/>
       <line x1="166" y1="150" x2="340" y2="220" stroke="#fb8c00" stroke-width="2.5" marker-end="url(#arrow2)"/>
@@ -185,7 +168,57 @@
     </svg>
 
     <div class="caption">
-      Figure 2. CASCADE propagation. Click the driver node to view the DOI.
+      Figure 2. Cascade propagation dynamics.
+    </div>
+  </div>
+
+  <!-- FIGURE 3: MODEL OUTPUT -->
+  <div class="figure">
+    <div class="output">
+
+<span class="tag">RUN-ID:</span> RNA-2026-0418-BRC-07
+
+<span class="tag">01 — INPUT SUMMARY</span>
+Tissue / context: Breast cancer (TCGA BRCA)
+Data type: Bulk RNA-seq + scRNA-seq
+Network type: Integrated regulatory (GRN)
+Samples: n = 1,082 bulk; n = 14,830 cells
+Reference network: DoRothEA v3 + STRING v12
+Analysis mode: Multi-agent cascade inference
+
+<span class="tag">02 — PREDICTED REGULATORY DRIVER GENES</span>
+TP53 — Tumor suppressor — 0.94  
+MYC — Transcription factor — 0.91  
+STAT3 — Transcription factor — 0.87  
+EGFR — Oncogene — 0.83  
+PIK3CA — Oncogene — 0.79  
+FOXM1 — TF — 0.76  
+AKT1 — Signaling regulator — 0.72  
+CDK4 — Oncogene — 0.68  
+
+<span class="tag">03 — CASCADE PROPAGATION SUMMARY</span>
+EGFR initiates upstream signaling through PI3K–AKT and RAS–MAPK branches.
+TP53 loss enables unrestricted MYC–FOXM1 activation.
+STAT3 creates feedback reinforcement via JAK2-mediated activation.
+Cascade depth stabilizes at 6 layers.
+
+<span class="tag">04 — MULTI-AGENT CONSENSUS</span>
+Agent 1: Network inference identifies TP53 and MYC as hubs.  
+Agent 2: Cascade simulation shows EGFR shortest propagation path.  
+Agent 3: Consensus: EGFR primary driver, MYC effector.
+
+<span class="tag">05 — FINAL OUTPUT</span>
+<span class="driver">Primary driver: EGFR</span>  
+Secondary drivers: STAT3, PIK3CA, FOXM1  
+Co-driver: TP53 loss-of-function  
+Cascade depth: 6 layers  
+
+RegNetAgents + CASCADE — TCGA-BRCA analysis complete
+
+    </div>
+
+    <div class="caption">
+      Figure 3. Example system inference output generated by RegNetAgents + CASCADE pipeline.
     </div>
   </div>
 
@@ -197,16 +230,12 @@
 
 <div class="card">
 <b>RegNetAgents</b><br>
-Multi-agent framework for regulatory driver identification.<br><br>
-
 <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">DOI</a> |
 <a href="https://github.com/jab57/regnetagents" target="_blank">Code</a>
 </div>
 
 <div class="card">
 <b>CASCADE</b><br>
-Cascade-based propagation analysis.<br><br>
-
 <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">DOI</a> |
 <a href="https://github.com/jab57/CASCADE" target="_blank">Code</a>
 </div>
