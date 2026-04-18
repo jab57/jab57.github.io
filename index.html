@@ -15,11 +15,28 @@
       background: #ffffff;
     }
 
-    /* 🔷 Header banner */
+    /* 🔷 HERO SECTION */
     .hero {
-      padding: 70px 20px 40px 20px;
-      background: linear-gradient(135deg, #f5f7fa, #e8eef5);
+      position: relative;
+      padding: 80px 20px 50px 20px;
       border-bottom: 1px solid #eaeaea;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    /* 🧬 Gene/network background */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/3b/Network_graph_example.svg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .hero-text {
+      position: relative;
     }
 
     h1 {
@@ -82,11 +99,15 @@
 
 <body>
 
-<!-- 🔷 HERO BANNER -->
+<!-- 🔷 HERO -->
 <div class="hero">
-  <h1>Jose Bird, PhD</h1>
-  <div class="subtitle">
-    AI Systems | Regulatory Networks | Multi-Agent Frameworks
+  <div class="hero-overlay"></div>
+
+  <div class="hero-text">
+    <h1>Jose Bird, PhD</h1>
+    <div class="subtitle">
+      AI Systems | Regulatory Networks | Multi-Agent Frameworks
+    </div>
   </div>
 </div>
 
