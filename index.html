@@ -29,14 +29,9 @@
       max-width: 750px;
     }
 
-    .section {
-      padding: 50px 20px;
-    }
+    .section { padding: 50px 20px; }
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
+    h2 { font-size: 24px; margin-bottom: 10px; }
 
     .subtext {
       color: #555;
@@ -64,6 +59,7 @@
       padding: 15px;
       background: #fff5f5;
       margin-bottom: 25px;
+      font-size: 15px;
     }
 
     .output {
@@ -74,6 +70,7 @@
       padding: 20px;
       border-radius: 6px;
       white-space: pre-wrap;
+      line-height: 1.5;
     }
 
     .tag { color: #8ab4f8; font-weight: bold; }
@@ -119,8 +116,7 @@
   <div class="subtext">
     Regulatory networks are constructed using ARACNe-based inference applied to TCGA bulk RNA-seq data. 
     These networks are integrated with curated transcription factor–target relationships from DoRothEA 
-    and protein interaction priors from STRING, and further refined using single-cell regulatory signals 
-    to capture context-specific activity.
+    and protein interaction priors from STRING, and refined using single-cell regulatory signals.
   </div>
 
   <div class="figure">
@@ -132,7 +128,7 @@
         </marker>
       </defs>
 
-      <!-- DATA SOURCES -->
+      <!-- SOURCES -->
       <rect x="40" y="40" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
       <text x="60" y="75">TCGA (Bulk RNA-seq)</text>
 
@@ -140,10 +136,10 @@
       <text x="60" y="155">Single-Cell Data</text>
 
       <rect x="40" y="200" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
-      <text x="60" y="235">DoRothEA (TF Regulons)</text>
+      <text x="60" y="235">DoRothEA</text>
 
       <rect x="40" y="280" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
-      <text x="60" y="315">STRING (PPI)</text>
+      <text x="60" y="315">STRING</text>
 
       <!-- ARACNe -->
       <rect x="320" y="140" width="240" height="90" fill="#e8f5e9" stroke="#43a047"/>
@@ -175,11 +171,8 @@
   <div class="figure">
     <svg viewBox="0 0 900 400" width="100%" height="300">
 
-      <!-- DRIVER -->
       <circle cx="100" cy="200" r="18" fill="#d32f2f"/>
-      <text x="70" y="240" font-size="12">Driver</text>
 
-      <!-- LAYERS -->
       <circle cx="250" cy="120" r="10" fill="#fb8c00"/>
       <circle cx="250" cy="280" r="10" fill="#fb8c00"/>
 
@@ -192,7 +185,6 @@
 
       <circle cx="750" cy="200" r="10" fill="#42a5f5"/>
 
-      <!-- EDGES -->
       <line x1="118" y1="200" x2="240" y2="120" stroke="#999" stroke-width="2"/>
       <line x1="118" y1="200" x2="240" y2="280" stroke="#999" stroke-width="2"/>
 
@@ -209,7 +201,6 @@
       <line x1="610" y1="120" x2="740" y2="200" stroke="#999" stroke-width="2"/>
       <line x1="610" y1="260" x2="740" y2="200" stroke="#999" stroke-width="2"/>
 
-      <!-- FEEDBACK -->
       <path d="M600 120 Q650 50 700 120" stroke="#ff6b6b" stroke-width="2" fill="none"/>
 
     </svg>
@@ -225,16 +216,44 @@
   <h2>Results</h2>
 
   <div class="highlight-box">
-    <b>Key Finding:</b> FOXM1 is the dominant cascade driver, affecting 5,388 genes.
+    <b>Key Finding:</b> FOXM1 emerges as the dominant cascade driver with the largest downstream impact (5,388 genes).
   </div>
 
   <div class="figure">
     <div class="output">
-FOXM1 — 5,388 genes  
-EGFR — 2,869 genes  
-MYC — 2,643 genes  
 
+RUN-ID: RNA-2026-0418-BRC-07
+
+01 — INPUT SUMMARY
+Tissue: Breast cancer (TCGA-BRCA)
+Data: Bulk RNA-seq + single-cell integration
+Network: ARACNe-derived GRN + curated priors
+Samples: n = 1,082 bulk; 14,830 cells
+
+02 — REGULATORY DRIVER RANKING
+FOXM1 — 5,388 genes — score 1.00
+EGFR — 2,869 genes — score 0.72
+MYC — 2,643 genes — score 0.62
+PIK3CA — 2,166 genes — score 0.52
+TP53 — 2,003 genes — score 0.48
+CDK4 — 1,996 genes — score 0.47
+AKT1 — 1,678 genes — score 0.40
+STAT3 — 1,625 genes — score 0.38
+
+03 — CASCADE PROPAGATION
+EGFR initiates upstream signaling and branches into PI3K–AKT and MAPK pathways.
+Signal converges on MYC and amplifies through FOXM1-driven transcriptional programs.
+
+04 — MULTI-AGENT CONSENSUS
+FOXM1 identified as dominant cascade driver.
+EGFR identified as primary upstream regulator.
+MYC acts as transcriptional amplifier.
+
+05 — FINAL OUTPUT
 Primary driver: FOXM1
+Upstream input: EGFR
+Amplifier: MYC
+
     </div>
   </div>
 </div>
