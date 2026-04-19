@@ -15,18 +15,18 @@
       line-height: 1.6;
     }
 
-    /* 🔷 TOP BRAND */
+    /* TOP BRAND */
     .brand {
       text-align: center;
-      padding: 25px 0 10px 0;
+      padding: 18px 0;
       font-weight: 600;
       letter-spacing: 1px;
       color: #444;
+      border-bottom: 1px solid #eee;
     }
 
     .hero {
       padding: 60px 20px 50px 20px;
-      border-bottom: 1px solid #eee;
       background: linear-gradient(180deg, #ffffff, #f7f9fc);
       text-align: center;
     }
@@ -36,17 +36,22 @@
     .tagline {
       font-size: 18px;
       color: #444;
-      max-width: 750px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
-    .section { padding: 50px 20px; }
+    .section {
+      padding: 50px 20px;
+    }
 
-    h2 { font-size: 24px; margin-bottom: 10px; }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
 
     .subtext {
       color: #555;
-      max-width: 750px;
+      max-width: 850px;
       margin-bottom: 25px;
     }
 
@@ -54,7 +59,7 @@
       margin: 30px 0;
       padding: 20px;
       border: 1px solid #e6e6e6;
-      border-radius: 8px;
+      border-radius: 10px;
       background: #fafafa;
       box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
@@ -65,7 +70,7 @@
       margin-top: 10px;
     }
 
-    .highlight-box {
+    .highlight {
       border-left: 4px solid #ff6b6b;
       padding: 15px;
       background: #fff5f5;
@@ -78,20 +83,25 @@
       background: #0f1115;
       color: #e6e6e6;
       padding: 20px;
-      border-radius: 6px;
+      border-radius: 8px;
       white-space: pre-wrap;
-      line-height: 1.5;
     }
 
     .links a {
       margin-right: 15px;
       font-weight: 500;
+      color: #1a73e8;
+      text-decoration: none;
     }
 
-    /* ✝️ FOOTER SCRIPTURE */
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* SCRIPTURE */
     .scripture {
       text-align: center;
-      padding: 50px 20px;
+      padding: 45px 20px;
       border-top: 1px solid #eee;
       margin-top: 40px;
       font-style: italic;
@@ -99,12 +109,12 @@
     }
 
     .verse {
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
       font-size: 15px;
     }
 
-    .reference {
+    .ref {
       margin-top: 10px;
       font-size: 13px;
       color: #777;
@@ -115,13 +125,14 @@
       padding: 20px;
       font-size: 13px;
       color: #777;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 
 <body>
 
-<!-- BRAND -->
+<!-- TOP BRAND -->
 <div class="brand">
   Bird AI Solutions
 </div>
@@ -130,7 +141,7 @@
 <div class="hero">
   <h1>Jose Bird, PhD</h1>
   <div class="tagline">
-    RegNetAgents + CASCADE: Multi-stage regulatory driver identification using ARACNe-based gene regulatory networks and cascade propagation modeling.
+    RegNetAgents + CASCADE: Multi-agent regulatory driver identification using ARACNe-derived gene regulatory networks and cascade propagation modeling.
   </div>
 </div>
 
@@ -138,17 +149,110 @@
 <div class="section">
   <h2>Overview</h2>
   <div class="subtext">
-    This system integrates ARACNe-inferred gene regulatory networks with cascade perturbation modeling and structured multi-stage reasoning 
-    to identify upstream drivers and downstream transcriptional programs in cancer systems.
+    This framework integrates ARACNe-inferred gene regulatory networks with curated transcription factor priors (DoRothEA), protein interaction networks (STRING),
+    and single-cell regulatory signals to model cascade propagation and identify upstream drivers in cancer systems.
   </div>
 </div>
 
-<!-- RESULTS -->
+<!-- SYSTEM ARCHITECTURE -->
+<div class="section">
+  <h2>System Architecture</h2>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 420" width="100%" height="320">
+
+      <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L6,3 z" fill="#333"/>
+        </marker>
+      </defs>
+
+      <!-- SOURCES -->
+      <rect x="40" y="40" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
+      <text x="60" y="75">TCGA Bulk RNA-seq</text>
+
+      <rect x="40" y="120" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
+      <text x="60" y="155">Single-cell Data</text>
+
+      <rect x="40" y="200" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
+      <text x="60" y="235">DoRothEA Regulons</text>
+
+      <rect x="40" y="280" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
+      <text x="60" y="315">STRING PPI</text>
+
+      <!-- ARACNE -->
+      <rect x="320" y="140" width="240" height="90" fill="#e8f5e9" stroke="#43a047"/>
+      <text x="350" y="185">ARACNe GRN Inference</text>
+
+      <!-- CASCADE -->
+      <rect x="620" y="140" width="220" height="90" fill="#fff3e0" stroke="#fb8c00"/>
+      <text x="650" y="185">Cascade Modeling</text>
+
+      <!-- ARROWS -->
+      <line x1="260" y1="70" x2="320" y2="170" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="260" y1="150" x2="320" y2="170"/>
+      <line x1="260" y1="230" x2="320" y2="190"/>
+      <line x1="260" y1="310" x2="320" y2="190"/>
+      <line x1="560" y1="185" x2="620" y2="185"/>
+
+    </svg>
+
+    <div class="caption">
+      Figure 1. Multi-source regulatory network construction pipeline.
+    </div>
+  </div>
+</div>
+
+<!-- CASCADE -->
+<div class="section">
+  <h2>Cascade Propagation Modeling</h2>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 400" width="100%" height="300">
+
+      <circle cx="100" cy="200" r="18" fill="#d32f2f"/>
+
+      <circle cx="250" cy="120" r="10" fill="#fb8c00"/>
+      <circle cx="250" cy="280" r="10" fill="#fb8c00"/>
+
+      <circle cx="420" cy="80" r="9" fill="#ffb74d"/>
+      <circle cx="420" cy="200" r="9" fill="#ffb74d"/>
+      <circle cx="420" cy="320" r="9" fill="#ffb74d"/>
+
+      <circle cx="600" cy="120" r="10" fill="#66bb6a"/>
+      <circle cx="600" cy="260" r="10" fill="#66bb6a"/>
+
+      <circle cx="750" cy="200" r="10" fill="#42a5f5"/>
+
+      <line x1="118" y1="200" x2="240" y2="120" stroke="#999"/>
+      <line x1="118" y1="200" x2="240" y2="280"/>
+      <line x1="260" y1="120" x2="410" y2="80"/>
+      <line x1="260" y1="120" x2="410" y2="200"/>
+      <line x1="260" y1="280" x2="410" y2="200"/>
+      <line x1="260" y1="280" x2="410" y2="320"/>
+      <line x1="430" y1="80" x2="590" y2="120"/>
+      <line x1="430" y1="200" x2="590" y2="120"/>
+      <line x1="430" y1="200" x2="590" y2="260"/>
+      <line x1="430" y1="320" x2="590" y2="260"/>
+      <line x1="610" y1="120" x2="740" y2="200"/>
+      <line x1="610" y1="260" x2="740" y2="200"/>
+
+      <path d="M600 120 Q650 50 700 120" stroke="#ff6b6b" fill="none"/>
+
+    </svg>
+
+    <div class="caption">
+      Figure 2. Cascade propagation with feedback loops and branching structure.
+    </div>
+  </div>
+</div>
+
+<!-- OUTPUT -->
 <div class="section">
   <h2>System Output</h2>
 
-  <div class="highlight-box">
-    FOXM1 emerges as the dominant cascade driver with EGFR as primary upstream regulator.
+  <div class="highlight">
+    FOXM1 is identified as the dominant cascade driver in BRCA regulatory networks.
   </div>
 
   <div class="figure">
@@ -158,38 +262,40 @@ RUN-ID: RNA-2026-0418-BRC-07
 FOXM1 — 5,388 genes
 EGFR — 2,869 genes
 MYC — 2,643 genes
+PIK3CA — 2,166 genes
+TP53 — 2,003 genes
 
 Primary driver: FOXM1
 Upstream regulator: EGFR
-Amplifier: MYC
+Transcriptional amplifier: MYC
     </div>
   </div>
 </div>
 
-<!-- LINKS -->
+<!-- ARTIFACTS -->
 <div class="section">
   <h2>Artifacts</h2>
   <div class="links">
-    <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">RegNetAgents DOI</a>
-    <a href="https://github.com/jab57/regnetagents" target="_blank">GitHub</a><br><br>
-    <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">CASCADE DOI</a>
-    <a href="https://github.com/jab57/CASCADE" target="_blank">GitHub</a>
+    <a href="https://doi.org/10.5281/zenodo.18500027">RegNetAgents DOI</a>
+    <a href="https://github.com/jab57/regnetagents">GitHub</a><br><br>
+    <a href="https://doi.org/10.5281/zenodo.18883012">CASCADE DOI</a>
+    <a href="https://github.com/jab57/CASCADE">GitHub</a>
   </div>
 </div>
 
-<!-- SCRIPTURE -->
+<!-- SCRIPTURE (REQUESTED ADDITION) -->
 <div class="scripture">
   <div class="verse">
     “Not unto us, O LORD, not unto us, but to Your name give glory, because of Your mercy, because of Your truth.”
   </div>
-  <div class="reference">
+  <div class="ref">
     Psalm 115:1 (NKJV)
   </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  © Bird AI Solutions
+  Bird AI Solutions
 </div>
 
 </body>
