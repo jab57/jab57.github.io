@@ -6,8 +6,8 @@
 
   <style>
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      max-width: 900px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0;
       color: #111;
@@ -16,86 +16,113 @@
     }
 
     .hero {
-      padding: 60px 20px 30px 20px;
-      border-bottom: 1px solid #e5e5e5;
+      padding: 80px 20px 50px 20px;
+      border-bottom: 1px solid #eee;
+      background: linear-gradient(180deg, #ffffff, #f7f9fc);
     }
 
-    h1 { font-size: 34px; margin-bottom: 5px; }
-    .subtitle { color: #555; font-size: 15px; margin-bottom: 25px; }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-size: 18px;
+      color: #444;
+      max-width: 700px;
+    }
+
+    .section {
+      padding: 50px 20px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      color: #555;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
 
     .figure {
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #ddd;
+      margin: 30px 0;
+      padding: 20px;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
       background: #fafafa;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
 
     .caption {
       font-size: 13px;
-      color: #444;
-      margin-top: 8px;
+      color: #555;
+      margin-top: 10px;
     }
 
-    .section { padding: 20px; }
-
-    h2 {
-      font-size: 20px;
-      margin-top: 40px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
-    }
-
-    p { font-size: 15px; }
-
-    .card {
-      border: 1px solid #e5e5e5;
+    .highlight-box {
+      border-left: 4px solid #ff6b6b;
       padding: 15px;
-      margin-top: 15px;
-      background: #fafafa;
+      background: #fff5f5;
+      margin-bottom: 25px;
+      font-size: 15px;
     }
 
-    a {
-      color: #1a73e8;
-      text-decoration: none;
-    }
-
-    a:hover { text-decoration: underline; }
-
-    .footer {
-      font-size: 12px;
-      color: #777;
-      margin-top: 40px;
-    }
-
-    /* OUTPUT PANEL */
     .output {
       font-family: "Courier New", monospace;
-      font-size: 12.5px;
-      white-space: pre-wrap;
+      font-size: 13px;
       background: #0f1115;
       color: #e6e6e6;
-      padding: 15px;
+      padding: 20px;
       border-radius: 6px;
-      overflow-x: auto;
+      white-space: pre-wrap;
     }
 
     .tag { color: #8ab4f8; font-weight: bold; }
     .driver { color: #ff6b6b; font-weight: bold; }
-    .highlight { color: #fbbc04; }
+
+    .links a {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    .footer {
+      padding: 40px 20px;
+      font-size: 13px;
+      color: #777;
+      border-top: 1px solid #eee;
+      margin-top: 40px;
+    }
   </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
   <h1>Jose Bird, PhD</h1>
-  <div class="subtitle">
-    AI Systems for Regulatory Network Inference and Multi-Agent Reasoning
+  <div class="tagline">
+    RegNetAgents + CASCADE: A multi-agent framework for regulatory driver identification and cascade-based inference across large-scale gene regulatory networks.
   </div>
+</div>
 
-  <!-- FIGURE 1 -->
+<!-- WHAT THIS IS -->
+<div class="section">
+  <h2>Overview</h2>
+  <div class="subtext">
+    This system integrates regulatory network inference, cascade propagation modeling, and multi-agent reasoning to identify upstream drivers and downstream transcriptional effects in complex biological systems.
+  </div>
+</div>
+
+<!-- SYSTEM -->
+<div class="section">
+  <h2>System Architecture</h2>
+
   <div class="figure">
     <svg viewBox="0 0 900 300" width="100%" height="250">
+
       <defs>
         <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
           <path d="M0,0 L0,6 L6,3 z" fill="#333"/>
@@ -107,125 +134,104 @@
       <rect x="430" y="110" width="180" height="70" fill="#fff3e0" stroke="#fb8c00"/>
       <rect x="650" y="110" width="200" height="70" fill="#f3e5f5" stroke="#8e24aa"/>
 
-      <text x="30" y="140" font-size="13">Data Sources</text>
-      <text x="30" y="160" font-size="12">(TCGA, Single-Cell)</text>
-
-      <text x="220" y="140" font-size="13">Regulatory Network</text>
-      <text x="220" y="160" font-size="12">Inference</text>
-
-      <text x="440" y="140" font-size="13">Cascade Modeling</text>
-      <text x="440" y="160" font-size="12">Propagation</text>
-
-      <text x="660" y="140" font-size="13">Multi-Agent Reasoning</text>
-      <text x="660" y="160" font-size="12">Driver ID</text>
+      <text x="30" y="140">Data Sources</text>
+      <text x="220" y="140">Network Inference</text>
+      <text x="440" y="140">Cascade Modeling</text>
+      <text x="660" y="140">Multi-Agent Reasoning</text>
 
       <line x1="170" y1="145" x2="210" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
       <line x1="390" y1="145" x2="430" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
       <line x1="610" y1="145" x2="650" y2="145" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
     </svg>
 
-    <div class="caption">Figure 1. System architecture.</div>
+    <div class="caption">
+      Figure 1. Integrated pipeline for regulatory inference and driver identification.
+    </div>
   </div>
+</div>
 
-  <!-- FIGURE 2 -->
+<!-- METHOD -->
+<div class="section">
+  <h2>Cascade Modeling</h2>
+
   <div class="figure">
     <svg viewBox="0 0 900 300" width="100%" height="250">
 
-      <defs>
-        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
-          <path d="M0,0 L0,6 L6,3 z" fill="#444"/>
-        </marker>
-      </defs>
-
       <circle cx="150" cy="150" r="16" fill="#d32f2f"/>
-      <text x="130" y="185" font-size="12">Driver</text>
-
       <circle cx="350" cy="80" r="10" fill="#fb8c00"/>
       <circle cx="350" cy="150" r="10" fill="#fb8c00"/>
       <circle cx="350" cy="220" r="10" fill="#fb8c00"/>
 
-      <circle cx="550" cy="110" r="8" fill="#bbb"/>
-      <circle cx="550" cy="190" r="8" fill="#bbb"/>
+      <line x1="166" y1="150" x2="340" y2="80" stroke="#fb8c00" stroke-width="2.5"/>
+      <line x1="166" y1="150" x2="340" y2="150" stroke="#fb8c00" stroke-width="2.5"/>
+      <line x1="166" y1="150" x2="340" y2="220" stroke="#fb8c00" stroke-width="2.5"/>
 
-      <line x1="166" y1="150" x2="340" y2="80" stroke="#fb8c00" stroke-width="2.5" marker-end="url(#arrow2)"/>
-      <line x1="166" y1="150" x2="340" y2="150" stroke="#fb8c00" stroke-width="2.5" marker-end="url(#arrow2)"/>
-      <line x1="166" y1="150" x2="340" y2="220" stroke="#fb8c00" stroke-width="2.5" marker-end="url(#arrow2)"/>
     </svg>
 
-    <div class="caption">Figure 2. Cascade propagation dynamics.</div>
+    <div class="caption">
+      Figure 2. Signal propagation across regulatory layers.
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="section">
+  <h2>Results</h2>
+
+  <div class="highlight-box">
+    <b>Key Finding:</b> FOXM1 emerges as the dominant cascade driver (5,388 affected genes), surpassing EGFR and MYC in network-wide perturbation impact.
   </div>
 
-  <!-- FIGURE 3: REAL RESULTS -->
   <div class="figure">
     <div class="output">
 
 <span class="tag">SYSTEM:</span> RegNetAgents + CASCADE  
-<span class="tag">CONTEXT:</span> TCGA-BRCA · tumor regulatory network · knockdown depth=2 · α=0.70  
+<span class="tag">CONTEXT:</span> TCGA-BRCA · knockdown depth=2  
 
-<span class="tag">REAL CASCADE PERTURBATION RESULTS</span>
-FOXM1 — 5,388 affected genes — score 1.00  
-EGFR — 2,869 affected genes — score 0.72  
-MYC — 2,643 affected genes — score 0.62  
-PIK3CA — 2,166 affected genes — score 0.52  
-TP53 — 2,003 affected genes — score 0.48  
-CDK4 — 1,996 affected genes — score 0.47  
-AKT1 — 1,678 affected genes — score 0.40  
-STAT3 — 1,625 affected genes — score 0.38  
+<span class="tag">CASCADE RESULTS</span>
+FOXM1 — 5,388 genes — score 1.00  
+EGFR — 2,869 genes — score 0.72  
+MYC — 2,643 genes — score 0.62  
+PIK3CA — 2,166 genes — score 0.52  
+TP53 — 2,003 genes — score 0.48  
+CDK4 — 1,996 genes — score 0.47  
+AKT1 — 1,678 genes — score 0.40  
+STAT3 — 1,625 genes — score 0.38  
 
-<span class="tag">KEY FINDINGS</span>
-• FOXM1 is dominant cascade driver (5,388 genes, mitotic program)  
-• EGFR drives strong Wnt/stromal remodeling  
-• MYC enriches ribosome biogenesis / RNA processing  
-• PIK3CA links to mitochondrial metabolism  
-• TP53 acts as suppressive gatekeeper  
-• STAT3 shows lowest cascade breadth  
-
-<span class="tag">RANKING SHIFT</span>
-FOXM1: #6 → <span class="driver">#1</span>  
-TP53: #1 → #5  
-EGFR: #4 → #2  
-STAT3: #3 → #8  
-
-<span class="tag">FINAL SYSTEM OUTPUT</span>
-Primary cascade driver: <span class="driver">FOXM1</span>  
-Secondary driver: EGFR  
-Transcriptional amplifier: MYC  
-Co-driver: TP53 loss-of-function  
-Cascade depth: 6 layers  
-
-RegNetAgents + CASCADE analysis complete
+<span class="tag">FINAL</span>
+<span class="driver">Primary driver: FOXM1</span>  
+Secondary: EGFR  
+Amplifier: MYC  
     </div>
 
     <div class="caption">
-      Figure 3. Real perturbation-based cascade inference results (TCGA-BRCA).
+      Figure 3. Perturbation-based cascade inference results.
     </div>
   </div>
-
 </div>
 
+<!-- LINKS -->
 <div class="section">
+  <h2>Artifacts</h2>
 
-<h2>Core Work</h2>
-
-<div class="card">
-<b>RegNetAgents</b><br>
-<a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">DOI</a> |
-<a href="https://github.com/jab57/regnetagents" target="_blank">Code</a>
+  <div class="links">
+    <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">RegNetAgents DOI</a>
+    <a href="https://github.com/jab57/regnetagents" target="_blank">GitHub</a>
+    <br><br>
+    <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">CASCADE DOI</a>
+    <a href="https://github.com/jab57/CASCADE" target="_blank">GitHub</a>
+  </div>
 </div>
 
-<div class="card">
-<b>CASCADE</b><br>
-<a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">DOI</a> |
-<a href="https://github.com/jab57/CASCADE" target="_blank">Code</a>
+<!-- CONTACT -->
+<div class="section">
+  <h2>Contact</h2>
+  <p>jbird@birdaisolutions.com</p>
 </div>
-
-<h2>Contact</h2>
-<p>jbird@birdaisolutions.com</p>
 
 <div class="footer">
-Bird AI Solutions
-</div>
-
+  Bird AI Solutions
 </div>
 
 </body>
