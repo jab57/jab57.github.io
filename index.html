@@ -15,6 +15,7 @@
       line-height: 1.6;
     }
 
+    /* BRAND */
     .brand {
       text-align: center;
       padding: 18px 0;
@@ -35,13 +36,18 @@
     .tagline {
       font-size: 18px;
       color: #444;
-      max-width: 850px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .section { padding: 50px 20px; }
+    .section {
+      padding: 50px 20px;
+    }
 
-    h2 { font-size: 24px; margin-bottom: 10px; }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
 
     .subtext {
       color: #555;
@@ -132,7 +138,7 @@
 <div class="hero">
   <h1>Jose Bird, PhD</h1>
   <div class="tagline">
-    RegNetAgents + CASCADE: Multi-agent regulatory driver identification using ARACNe-derived gene regulatory networks and cascade propagation modeling.
+    RegNetAgents + CASCADE: Multi-agent regulatory driver identification using ARACNe-inferred gene regulatory networks and cascade propagation modeling in BRCA systems.
   </div>
 </div>
 
@@ -140,12 +146,12 @@
 <div class="section">
   <h2>Overview</h2>
   <div class="subtext">
-    This framework integrates ARACNe-inferred gene regulatory networks, curated transcription factor regulons (DoRothEA), protein interaction priors (STRING),
-    and single-cell regulatory signals into a unified cascade reasoning system for cancer driver identification.
+    This framework integrates ARACNe-derived gene regulatory networks from TCGA BRCA data with curated transcription factor regulons (DoRothEA),
+    protein interaction priors (STRING), and single-cell regulatory signals to infer cascade propagation and identify key regulatory drivers.
   </div>
 </div>
 
-<!-- SYSTEM ARCHITECTURE (FIXED EDGES) -->
+<!-- SYSTEM ARCHITECTURE -->
 <div class="section">
   <h2>System Architecture</h2>
 
@@ -160,16 +166,16 @@
 
       <!-- DATA SOURCES -->
       <rect x="40" y="40" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
-      <text x="60" y="75">TCGA Bulk RNA-seq</text>
+      <text x="60" y="75">TCGA BRCA Bulk RNA-seq</text>
 
       <rect x="40" y="120" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
-      <text x="60" y="155">Single-cell Data</text>
+      <text x="60" y="155">Single-cell Expression</text>
 
       <rect x="40" y="200" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
-      <text x="60" y="235">DoRothEA Regulons</text>
+      <text x="60" y="235">DoRothEA TF Regulons</text>
 
       <rect x="40" y="280" width="220" height="60" fill="#e3f2fd" stroke="#1e88e5"/>
-      <text x="60" y="315">STRING PPI</text>
+      <text x="60" y="315">STRING PPI Priors</text>
 
       <!-- ARACNE -->
       <rect x="320" y="140" width="240" height="90" fill="#e8f5e9" stroke="#43a047"/>
@@ -179,72 +185,81 @@
       <rect x="620" y="140" width="220" height="90" fill="#fff3e0" stroke="#fb8c00"/>
       <text x="650" y="185">Cascade Modeling</text>
 
-      <!-- FULL EDGE STRUCTURE -->
-      <line x1="260" y1="70" x2="320" y2="160" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-      <line x1="260" y1="150" x2="320" y2="170" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-      <line x1="260" y1="230" x2="320" y2="190" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
-      <line x1="260" y1="310" x2="320" y2="200" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+      <!-- EDGES -->
+      <line x1="260" y1="70" x2="320" y2="160" stroke="#555" marker-end="url(#arrow)"/>
+      <line x1="260" y1="150" x2="320" y2="170" stroke="#555" marker-end="url(#arrow)"/>
+      <line x1="260" y1="230" x2="320" y2="190" stroke="#555" marker-end="url(#arrow)"/>
+      <line x1="260" y1="310" x2="320" y2="200" stroke="#555" marker-end="url(#arrow)"/>
 
-      <line x1="560" y1="185" x2="620" y2="185" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+      <line x1="560" y1="185" x2="620" y2="185" stroke="#555" marker-end="url(#arrow)"/>
 
     </svg>
 
     <div class="caption">
-      Figure 1. Complete data integration pipeline with ARACNe GRN inference and cascade modeling.
+      Figure 1. Integrated regulatory network construction and cascade inference pipeline.
     </div>
   </div>
 </div>
 
-<!-- CASCADE (DENSIFIED EDGES) -->
+<!-- CASCADE (BIOLOGICAL BRCA NETWORK) -->
 <div class="section">
-  <h2>Cascade Propagation Modeling</h2>
+  <h2>Cascade Propagation Model (BRCA-specific)</h2>
 
   <div class="figure">
-    <svg viewBox="0 0 900 400" width="100%" height="300">
+    <svg viewBox="0 0 900 420" width="100%" height="320">
 
-      <circle cx="100" cy="200" r="18" fill="#d32f2f"/>
+      <defs>
+        <marker id="arrow2" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L6,3 z" fill="#333"/>
+        </marker>
+      </defs>
 
-      <circle cx="250" cy="100" r="10" fill="#fb8c00"/>
-      <circle cx="250" cy="200" r="10" fill="#fb8c00"/>
-      <circle cx="250" cy="300" r="10" fill="#fb8c00"/>
+      <!-- EGFR -->
+      <circle cx="120" cy="200" r="20" fill="#d32f2f"/>
+      <text x="95" y="235">EGFR</text>
 
-      <circle cx="420" cy="80" r="9" fill="#ffb74d"/>
-      <circle cx="420" cy="170" r="9" fill="#ffb74d"/>
-      <circle cx="420" cy="260" r="9" fill="#ffb74d"/>
-      <circle cx="420" cy="340" r="9" fill="#ffb74d"/>
+      <!-- PI3K / AKT -->
+      <circle cx="280" cy="120" r="14" fill="#fb8c00"/>
+      <text x="255" y="105">PIK3CA</text>
 
-      <circle cx="600" cy="120" r="10" fill="#66bb6a"/>
-      <circle cx="600" cy="220" r="10" fill="#66bb6a"/>
-      <circle cx="600" cy="300" r="10" fill="#66bb6a"/>
+      <circle cx="280" cy="280" r="14" fill="#fb8c00"/>
+      <text x="260" y="305">AKT1</text>
 
-      <circle cx="750" cy="200" r="10" fill="#42a5f5"/>
+      <!-- MYC / STAT3 -->
+      <circle cx="450" cy="120" r="14" fill="#ffb74d"/>
+      <text x="430" y="105">MYC</text>
 
-      <!-- dense connectivity -->
-      <line x1="118" y1="200" x2="240" y2="100" stroke="#999"/>
-      <line x1="118" y1="200" x2="240" y2="200"/>
-      <line x1="118" y1="200" x2="240" y2="300"/>
+      <circle cx="450" cy="280" r="14" fill="#ffb74d"/>
+      <text x="420" y="305">STAT3</text>
 
-      <line x1="260" y1="100" x2="410" y2="80"/>
-      <line x1="260" y1="100" x2="410" y2="170"/>
-      <line x1="260" y1="200" x2="410" y2="170"/>
-      <line x1="260" y1="300" x2="410" y2="260"/>
+      <!-- TP53 -->
+      <circle cx="450" cy="200" r="14" fill="#424242"/>
+      <text x="430" y="225" fill="#444">TP53↓</text>
 
-      <line x1="430" y1="80" x2="590" y2="120"/>
-      <line x1="430" y1="170" x2="590" y2="120"/>
-      <line x1="430" y1="170" x2="590" y2="220"/>
-      <line x1="430" y1="260" x2="590" y2="220"/>
-      <line x1="430" y1="340" x2="590" y2="300"/>
+      <!-- FOXM1 -->
+      <circle cx="620" cy="200" r="18" fill="#66bb6a"/>
+      <text x="595" y="235">FOXM1</text>
 
-      <line x1="610" y1="120" x2="740" y2="200"/>
-      <line x1="610" y1="220" x2="740" y2="200"/>
-      <line x1="610" y1="300" x2="740" y2="200"/>
+      <!-- OUTPUT -->
+      <circle cx="780" cy="200" r="18" fill="#42a5f5"/>
+      <text x="745" y="235">Proliferation</text>
 
-      <path d="M600 120 Q650 50 700 120" stroke="#ff6b6b" fill="none"/>
+      <!-- EDGES -->
+      <line x1="140" y1="200" x2="265" y2="120" stroke="#333" marker-end="url(#arrow2)"/>
+      <line x1="140" y1="200" x2="265" y2="280" stroke="#333" marker-end="url(#arrow2)"/>
+
+      <line x1="295" y1="120" x2="435" y2="120" stroke="#333" marker-end="url(#arrow2)"/>
+      <line x1="295" y1="280" x2="435" y2="280" stroke="#333" marker-end="url(#arrow2)"/>
+
+      <line x1="465" y1="120" x2="605" y2="200" stroke="#333" marker-end="url(#arrow2)"/>
+      <line x1="465" y1="280" x2="605" y2="200" stroke="#333" marker-end="url(#arrow2)"/>
+
+      <line x1="605" y1="200" x2="760" y2="200" stroke="#333" marker-end="url(#arrow2)"/>
 
     </svg>
 
     <div class="caption">
-      Figure 2. Dense cascade propagation with branching and convergence structure.
+      Figure 2. BRCA-specific cascade propagation showing EGFR → PI3K/AKT → MYC/STAT3 → FOXM1 → proliferation axis.
     </div>
   </div>
 </div>
@@ -254,7 +269,7 @@
   <h2>System Output</h2>
 
   <div class="highlight">
-    FOXM1 is the dominant cascade driver across BRCA regulatory networks.
+    FOXM1 is the dominant cascade driver in BRCA regulatory networks.
   </div>
 
   <div class="figure">
