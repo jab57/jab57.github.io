@@ -57,6 +57,46 @@
     }
     .nav-links a:hover { color: var(--dark); }
 
+    /* HAMBURGER */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 12px 24px;
+        font-size: 15px;
+      }
+    }
+
     /* PUBLICATIONS */
     .pubs-section {
       padding: 70px 0;
@@ -99,76 +139,12 @@
     .pub-meta h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
     .pub-meta p { font-size: 13.5px; color: #888; line-height: 1.5; }
 
-    /* BUILT ON */
-    .builton-section {
-      background: var(--light-bg);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 60px 30px;
-    }
-    .builton-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .builton-section h3 {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 28px;
-      text-align: center;
-    }
-    .builton-cards {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .builton-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 22px 26px;
-      max-width: 340px;
-      flex: 1;
-      min-width: 260px;
-    }
-    .builton-card h4 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 6px;
-    }
-    .builton-card p {
-      font-size: 13.5px;
-      color: #777;
-      line-height: 1.6;
-    }
-    .builton-card .card-credit {
-      font-size: 11.5px;
-      color: #bbb;
-      margin-top: 10px;
-      font-style: italic;
-    }
 
     /* HERO */
     .hero {
       text-align: center;
       padding: 90px 30px 70px;
       background: linear-gradient(170deg, #fff 0%, #f0f4ff 60%, #fff 100%);
-    }
-    .hero-label {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #5c6bc0;
-      margin-bottom: 18px;
-      padding: 4px 14px;
-      border: 1px solid #c5cae9;
-      border-radius: 20px;
     }
     .hero h1 {
       font-size: 50px;
@@ -288,6 +264,79 @@
     }
     .project-links a:hover { border-color: #666; }
 
+    /* SAMPLE OUTPUT */
+    .output-block {
+      margin-top: 48px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #2a2a3e;
+    }
+    .output-header {
+      background: #1a1a2e;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .output-header .dots { display: flex; gap: 6px; }
+    .output-header .dots span {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .output-header .dots span:nth-child(1) { background: #ff5f57; }
+    .output-header .dots span:nth-child(2) { background: #febc2e; }
+    .output-header .dots span:nth-child(3) { background: #28c840; }
+    .output-header .output-title {
+      font-size: 11px;
+      color: #666;
+      font-family: "SF Mono", "Fira Code", monospace;
+      margin-left: 4px;
+    }
+    .output-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+    .output-label-rna { background: #3d1a00; color: #e65c00; }
+    .output-label-cas { background: #001a3d; color: #4d8fcc; }
+    .output-body {
+      background: #12121f;
+      padding: 22px 24px;
+      font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+      font-size: 12.5px;
+      line-height: 1.75;
+      color: #c8ccd8;
+      overflow-x: auto;
+    }
+    .out-query { color: #7c8cf8; font-weight: 700; }
+    .out-section {
+      color: #e65c00;
+      font-weight: 700;
+      margin-top: 14px;
+      display: block;
+    }
+    .out-section-cas { color: #4d8fcc; }
+    .out-key { color: #888; }
+    .out-val { color: #e8e8e8; }
+    .out-dim { color: #555; }
+    .out-hi { color: #ffd080; }
+    .out-synthesis {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #1a1a2e;
+      border-left: 3px solid #e65c00;
+      border-radius: 0 6px 6px 0;
+      color: #aaa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .out-synthesis-cas { border-left-color: #4d8fcc; }
+    .out-synthesis strong { color: #e8e8e8; font-weight: 600; }
+
     /* FIGURE BOX */
     .figure-box {
       background: var(--light-bg);
@@ -403,7 +452,12 @@
       border-radius: 14px;
       padding: 32px 36px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .teaser-card-top {
+      display: flex;
+      align-items: flex-start;
       gap: 28px;
       flex-wrap: wrap;
     }
@@ -453,22 +507,27 @@
 <!-- NAV -->
 <nav>
   <span class="nav-brand">Bird AI Solutions</span>
+  <button class="nav-toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#regnetagents">RegNetAgents</a>
     <a href="#cascade">CASCADE</a>
+    <a href="https://github.com/jab57" target="_blank">GitHub</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-label">Jose Bird, PhD</div>
+  <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;">Bird AI Solutions</div>
   <h1>AI Systems for<br>Computational Biology</h1>
   <p class="hero-sub">
     Open-source tools for gene regulatory network inference, multi-omic perturbation analysis, and therapeutic target discovery — built on LangGraph + MCP.
   </p>
   <div class="hero-btns">
     <a href="#regnetagents" class="btn btn-dark">Explore Projects</a>
+    <a href="https://github.com/jab57" target="_blank" class="btn btn-outline">View on GitHub</a>
   </div>
 </div>
 
@@ -478,6 +537,12 @@
     <div>
       <div class="about-label">About</div>
       <h2>Jose Bird,<br>PhD</h2>
+      <p style="font-size:13px;color:#999;margin-top:10px;line-height:1.7;">
+        PhD, Statistics · UTSA<br>
+        MBA · UAA<br>
+        MS ChEE · UH<br>
+        BS ChEE · UPR Mayagüez
+      </p>
     </div>
     <div class="about-body">
       <p>
@@ -595,6 +660,45 @@
         <div class="fig-caption">Parallel Network, Pathway, and Domain agents coordinated by a LangGraph DAG, with Claude LLM synthesis at the output.</div>
       </div>
     </div>
+
+    <!-- Sample output -->
+    <div class="output-block">
+      <div class="output-header">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="output-title">regnetagents — ESR1 · breast cancer epithelial</span>
+        <span class="output-label output-label-rna">Sample Output</span>
+      </div>
+      <div class="output-body">
+<span class="out-query">$ query: gene=ESR1  cell_type=epithelial_cell  tcga_network=brca</span>
+
+<span class="out-section">▸ Network Context  <span class="out-dim">(ARACNe · GREmLN · ENSG00000091831)</span></span>
+  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>  <span class="out-dim">170 targets · 80 upstream regulators</span>
+  <span class="out-key">Target class      </span><span class="out-val">nuclear_receptor  ·  druggability = high</span>
+  <span class="out-key">Cascade targets (L1)</span><span class="out-val">CD47 · H4C3 · CTR9 · MBD5 · HLA-DOB</span>
+  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only  (absent in all immune cell types)</span>
+
+<span class="out-section">▸ Top Upstream Regulators  <span class="out-dim">(who controls ESR1)</span></span>
+  <span class="out-hi">CHD2</span><span class="out-val">   · FOXQ1 · TCF12 · BNC2 · AHCTF1 · NR1D2 · MAFF</span>
+  <span class="out-dim">  CHD2 = chromatin remodeler — epigenetic gatekeeper of ESR1 expression</span>
+
+<span class="out-section">▸ Pathway Enrichment  <span class="out-dim">(Reactome)</span></span>
+  <span class="out-val">1.  CHD1 and CHD2 subfamily              </span><span class="out-hi">p = 5.3e-06</span>  <span class="out-dim">R-HSA-9943411</span>
+  <span class="out-val">2.  Mitochondrial translation termination </span><span class="out-hi">p = 2.9e-05</span>  <span class="out-dim">R-HSA-5419276</span>
+  <span class="out-val">3.  CHD chromatin remodelers              </span><span class="out-hi">p = 9.7e-05</span>  <span class="out-dim">R-HSA-9937848</span>
+  <span class="out-val">4.  Negative regulation of CDH1 txn      </span><span class="out-hi">p = 1.4e-04</span>  <span class="out-dim">R-HSA-9764725</span>
+
+<span class="out-section">▸ Domain Analysis</span>
+  <span class="out-key">Cancer relevance  </span><span class="out-val">moderate  ·  biomarker = prognostic|predictive</span>
+  <span class="out-key">Drug development  </span><span class="out-val">nuclear_receptor · intervention = inhibition|activation</span>
+  <span class="out-key">Clinical priority </span><span class="out-hi">high</span>  <span class="out-dim">(epithelial-specific · hormone-sensitive cancers)</span>
+
+<div class="out-synthesis">
+  <strong>LLM Synthesis (Claude)</strong><br>
+  ESR1 is confirmed as a master regulator in breast cancer epithelial cells — the only cell type where it is active across the GREmLN network. With 80 upstream regulators and 170 downstream targets, it sits at the center of a tightly controlled transcriptional hub. The dominant pathway signal is CHD2-driven chromatin remodeling, identifying CHD2 as the epigenetic gatekeeper of ESR1 expression and a potential upstream intervention point. As a nuclear receptor, ESR1 is highly druggable via both inhibition (e.g., fulvestrant) and activation strategies. Cross-referencing with CASCADE's perturbation analysis of the same gene reveals the full picture: RegNetAgents maps the regulatory architecture of ESR1, while CASCADE quantifies the therapeutic consequences of disrupting it.
+</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -604,13 +708,13 @@
     <div class="section-eyebrow eyebrow-cas">Project 02</div>
     <h2>CASCADE</h2>
     <p class="project-tagline">
-      Comprehensive multi-omic perturbation analysis integrating seven independent evidence sources — network propagation, STRING PPI, LINCS L1000, DoRothEA, DepMap CRISPR, super-enhancers, and cBioPortal — to identify and rank therapeutic targets.
+      Comprehensive multi-omic perturbation analysis integrating eight independent evidence sources — GREmLN embeddings, network propagation, STRING PPI, LINCS L1000, DoRothEA, DepMap CRISPR, super-enhancers, and cBioPortal — orchestrated by LangGraph to identify and rank therapeutic targets.
     </p>
 
     <div class="two-col">
       <!-- Left: schematic -->
       <div class="figure-box">
-        <svg viewBox="0 0 560 350" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 -18 560 408" width="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arr-cas" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <path d="M0,0 L0,6 L7,3 z" fill="#1565c0"/>
@@ -627,86 +731,92 @@
           </defs>
 
           <!-- Input box -->
-          <rect x="10" y="141" width="96" height="68" rx="10" fill="white" stroke="#1565c0" stroke-width="2" filter="url(#shadow-sm2)"/>
-          <text x="58" y="167" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Gene</text>
-          <text x="58" y="182" text-anchor="middle" font-size="10" fill="#aaa">+</text>
-          <text x="58" y="197" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Cell Type</text>
+          <rect x="10" y="161" width="96" height="68" rx="10" fill="white" stroke="#1565c0" stroke-width="2" filter="url(#shadow-sm2)"/>
+          <text x="58" y="187" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Gene</text>
+          <text x="58" y="202" text-anchor="middle" font-size="10" fill="#aaa">+</text>
+          <text x="58" y="217" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Cell Type</text>
 
-          <!-- 7 source boxes — evenly spaced vertically in viewBox 350 -->
-          <!-- y positions (center): 28, 75, 122, 175, 228, 275, 322 -->
-          <!-- Box height 34, so top = center - 17 -->
+          <!-- 8 source boxes — evenly spaced vertically in viewBox 390 -->
+          <!-- cy: 24, 67, 110, 153, 195, 238, 281, 348 → top = cy-17 -->
 
-          <!-- Source labels and positions -->
-          <!-- 1: Network Propagation cy=28 -->
-          <rect x="148" y="11" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="33" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Network Propagation</text>
+          <!-- 1: GREmLN Embeddings -->
+          <rect x="148" y="7" width="130" height="34" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" filter="url(#shadow-sm2)"/>
+          <text x="213" y="29" text-anchor="middle" font-size="10" font-weight="700" fill="#1565c0">GREmLN Embeddings</text>
 
-          <!-- 2: STRING PPI cy=75 -->
-          <rect x="148" y="58" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="80" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">STRING PPI</text>
+          <!-- 2: Network Propagation -->
+          <rect x="148" y="53" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="75" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Network Propagation</text>
 
-          <!-- 3: LINCS L1000 cy=122 -->
-          <rect x="148" y="105" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="127" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">LINCS L1000</text>
+          <!-- 3: STRING PPI -->
+          <rect x="148" y="99" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="121" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">STRING PPI</text>
 
-          <!-- 4: DoRothEA TF Regulons cy=175 -->
-          <rect x="148" y="158" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="180" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DoRothEA TF Regulons</text>
+          <!-- 4: LINCS L1000 -->
+          <rect x="148" y="145" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="167" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">LINCS L1000</text>
 
-          <!-- 5: DepMap CRISPR cy=228 -->
-          <rect x="148" y="211" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="233" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DepMap CRISPR</text>
+          <!-- 5: DoRothEA -->
+          <rect x="148" y="191" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="213" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DoRothEA TF Regulons</text>
 
-          <!-- 6: Super-enhancers cy=275 -->
-          <rect x="148" y="258" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="280" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Super-enhancers</text>
+          <!-- 6: DepMap CRISPR -->
+          <rect x="148" y="237" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="259" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DepMap CRISPR</text>
 
-          <!-- 7: cBioPortal cy=322 -->
-          <rect x="148" y="305" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="327" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">cBioPortal</text>
+          <!-- 7: Super-enhancers -->
+          <rect x="148" y="283" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="305" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Super-enhancers</text>
+
+          <!-- 8: cBioPortal -->
+          <rect x="148" y="329" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="351" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">cBioPortal</text>
 
           <!-- Input → sources (fan out lines) -->
-          <line x1="106" y1="175" x2="147" y2="28" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="175" x2="147" y2="75" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="175" x2="147" y2="122" stroke="#1565c0" stroke-width="1.2" opacity="0.6" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="175" x2="147" y2="175" stroke="#1565c0" stroke-width="2" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="175" x2="147" y2="228" stroke="#1565c0" stroke-width="1.2" opacity="0.6" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="175" x2="147" y2="275" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="175" x2="147" y2="322" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="24"  stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="70"  stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="116" stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="162" stroke="#1565c0" stroke-width="1.5" opacity="0.7"  marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="195" stroke="#1565c0" stroke-width="2"               marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="254" stroke="#1565c0" stroke-width="1.5" opacity="0.7"  marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="300" stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="195" x2="147" y2="346" stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
 
           <!-- Sources → synthesis (fan in lines) -->
-          <line x1="278" y1="28" x2="370" y2="165" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="75" x2="370" y2="168" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="122" x2="370" y2="172" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="175" x2="370" y2="175" stroke="#90a4ae" stroke-width="2" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="228" x2="370" y2="178" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="275" x2="370" y2="182" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="322" x2="370" y2="185" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="24"  x2="370" y2="185" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="70"  x2="370" y2="188" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="116" x2="370" y2="191" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="162" x2="370" y2="194" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="195" x2="370" y2="195" stroke="#90a4ae" stroke-width="2"   marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="254" x2="370" y2="198" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="300" x2="370" y2="201" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="346" x2="370" y2="204" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
 
-          <!-- Bracket label for sources -->
-          <rect x="142" y="4" width="143" height="340" rx="10" fill="none" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.3"/>
+          <!-- LangGraph DAG wrapper -->
+          <rect x="136" y="0" width="228" height="390" rx="10" fill="none" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.3"/>
+          <text x="250" y="-5" text-anchor="middle" font-size="10" font-weight="700" fill="#1565c0" opacity="0.7" letter-spacing="0.5">LANGGRAPH DAG</text>
 
           <!-- Synthesis box -->
-          <rect x="372" y="136" width="108" height="78" rx="10" fill="white" stroke="#1565c0" stroke-width="2.5" filter="url(#shadow-cas)"/>
-          <text x="426" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Evidence</text>
-          <text x="426" y="181" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Synthesis</text>
-          <text x="426" y="200" text-anchor="middle" font-size="9" fill="#aaa">LangGraph · Claude</text>
+          <rect x="372" y="156" width="108" height="78" rx="10" fill="white" stroke="#1565c0" stroke-width="2.5" filter="url(#shadow-cas)"/>
+          <text x="426" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">LLM</text>
+          <text x="426" y="201" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Synthesis</text>
+          <text x="426" y="220" text-anchor="middle" font-size="9" fill="#aaa">Claude</text>
 
           <!-- Arrow to output -->
-          <line x1="480" y1="175" x2="508" y2="175" stroke="#1565c0" stroke-width="2.5" marker-end="url(#arr-cas)"/>
+          <line x1="480" y1="195" x2="508" y2="195" stroke="#1565c0" stroke-width="2.5" marker-end="url(#arr-cas)"/>
 
           <!-- Output box -->
-          <rect x="510" y="136" width="44" height="78" rx="10" fill="#1565c0" filter="url(#shadow-sm2)"/>
-          <text x="532" y="167" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">Target</text>
-          <text x="532" y="183" text-anchor="middle" font-size="9.5" fill="#bbdefb">Report</text>
+          <rect x="510" y="156" width="44" height="78" rx="10" fill="#1565c0" filter="url(#shadow-sm2)"/>
+          <text x="532" y="187" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">Target</text>
+          <text x="532" y="203" text-anchor="middle" font-size="9.5" fill="#bbdefb">Report</text>
         </svg>
-        <div class="fig-caption">Seven independent evidence sources fan into a single evidence synthesis node, producing ranked therapeutic target reports per gene and cell type.</div>
+        <div class="fig-caption">Eight independent evidence sources — led by GREmLN embeddings — orchestrated by a LangGraph DAG, fanning into a single LLM synthesis node to produce ranked therapeutic target reports.</div>
       </div>
 
       <!-- Right: info -->
       <div>
         <ul class="features">
-          <li><span class="feat-dot dot-cas"></span>Network propagation from gene perturbation signals</li>
+          <li><span class="feat-dot dot-cas"></span>GREmLN 256-dim embeddings — functional gene similarity from 11M cells</li>
+          <li><span class="feat-dot dot-cas"></span>Network propagation from gene perturbation signals (BFS)</li>
           <li><span class="feat-dot dot-cas"></span>STRING protein–protein interaction scoring</li>
           <li><span class="feat-dot dot-cas"></span>LINCS L1000 transcriptional perturbation data</li>
           <li><span class="feat-dot dot-cas"></span>DoRothEA transcription factor regulon activity</li>
@@ -719,6 +829,7 @@
           <span class="pill">Python</span>
           <span class="pill">LangGraph</span>
           <span class="pill">MCP</span>
+          <span class="pill">GREmLN</span>
           <span class="pill">Multi-omic</span>
         </div>
         <div class="project-links">
@@ -727,6 +838,46 @@
         </div>
       </div>
     </div>
+
+    <!-- Sample output -->
+    <div class="output-block">
+      <div class="output-header">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="output-title">cascade — ESR1 knockdown · breast cancer epithelial</span>
+        <span class="output-label output-label-cas">Sample Output</span>
+      </div>
+      <div class="output-body">
+<span class="out-query">$ query: gene=ESR1  perturbation=knockdown  context=Breast Cancer (epithelial_cell)</span>
+
+<span class="out-section out-section-cas">▸ Gene Classification  <span class="out-dim">(ENSG00000091831)</span></span>
+  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>
+  <span class="out-key">DoRothEA          </span><span class="out-val">validated · confidence </span><span class="out-hi">A</span>  <span class="out-dim">(752 curated targets)</span>
+  <span class="out-key">Network impact    </span><span class="out-val">3,080 affected genes · 126 direct targets</span>
+  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only (absent in all immune cell types)</span>
+
+<span class="out-section out-section-cas">▸ Multi-Evidence Target Rankings  <span class="out-dim">(top genes corroborated across sources)</span></span>
+  <span class="out-dim">Gene    Sources  Net Effect  Key Evidence</span>
+  <span class="out-dim">──────  ───────  ──────────  ────────────────────────────────</span>
+  <span class="out-hi">GATA3  </span><span class="out-val">  3       −2.238 ↓   net · regulators · targets (w=0.9999)</span>
+  <span class="out-val">MYB      3       −1.460 ↓   net · regulators · targets (w=0.9998)</span>
+  <span class="out-val">FOXA1    3       −1.249 ↓   net · regulators · STRING (0.406)</span>
+  <span class="out-val">PGR      3       —          DoRothEA A · regulators · targets (w=0.9994)</span>
+
+<span class="out-section out-section-cas">▸ Evidence Source Detail</span>
+  <span class="out-key">STRING PPI        </span><span class="out-val">IGF1R=</span><span class="out-hi">0.999</span><span class="out-val">  BRCA1=</span><span class="out-hi">0.999</span><span class="out-val">  PIK3R1=</span><span class="out-hi">0.994</span>  <span class="out-dim">(experimental)</span>
+  <span class="out-key">LINCS L1000       </span><span class="out-val">LTF </span><span class="out-hi">+0.015↑</span><span class="out-val">  MAP7 </span><span class="out-hi">−0.022↓</span><span class="out-val">  TNFSF10 </span><span class="out-hi">+0.015↑</span>
+  <span class="out-key">DepMap CRISPR     </span><span class="out-val">Breast mean Chronos </span><span class="out-hi">−0.318</span><span class="out-val"> (n=53)  pan-cancer mean −0.047</span>
+  <span class="out-key">Super-enhancer    </span><span class="out-val">present in MCF-7 + 2 cell types · </span><span class="out-hi">BRD4-sensitive</span>
+  <span class="out-key">DoRothEA A targets</span><span class="out-val">CCND1 · E2F1 · VEGFA · IGF1 · AKT1 · CDKN1A · RARA</span>
+  <span class="out-key">GREmLN embeddings </span><span class="out-dim">not available in this run (torch checkpoint not loaded)</span>
+
+<div class="out-synthesis out-synthesis-cas">
+  <strong>LLM Synthesis (Claude)</strong><br>
+  ESR1 knockdown in breast cancer epithelial cells disrupts a master regulatory hub affecting 3,080 downstream genes — with GATA3, MYB, and FOXA1 as the highest-confidence effectors, each corroborated by three independent evidence sources. STRING confirms direct physical coupling to IGF1R and BRCA1 (score 0.999), while DepMap CRISPR shows strong lineage-selective essentiality in breast (Chronos −0.318 across 53 lines) with minimal pan-cancer toxicity (−0.047), making ESR1 a clean lineage-specific target. Super-enhancer presence in MCF-7 cells and BRD4 sensitivity open a parallel epigenetic intervention angle via JQ1/OTX015. The DoRothEA A-confidence regulon (CCND1, E2F1, AKT1) further positions ESR1 as a master orchestrator of ER+ breast cancer proliferation.
+</div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -735,11 +886,84 @@
   <div class="teaser-inner">
     <h3>Coming Soon</h3>
     <div class="teaser-card">
-      <span class="teaser-badge">In Development</span>
-      <div class="teaser-text">
-        <h4>Orchestra</h4>
-        <p>An MCP orchestration layer that composes RegNetAgents and CASCADE into a unified analysis pipeline — coordinating parallel causal chain analysis, therapeutic target validation, and effector routing through a single LangGraph DAG.</p>
+      <div class="teaser-card-top">
+        <span class="teaser-badge">In Development</span>
+        <div class="teaser-text">
+          <h4>Orchestra</h4>
+          <p>An MCP orchestration layer that composes RegNetAgents and CASCADE into a unified analysis pipeline — routing GRN regulatory context from RegNetAgents into CASCADE's perturbation analysis, producing causal chain reports neither tool can generate alone.</p>
+          <a href="mailto:joseabird@gmail.com?subject=Notify me about Orchestra" style="display:inline-block;margin-top:14px;font-size:13px;font-weight:600;color:#555;text-decoration:none;border-bottom:1.5px solid #ccc;padding-bottom:1px;">Notify me when it launches →</a>
+        </div>
       </div>
+
+      <!-- Orchestra interaction diagram -->
+      <svg viewBox="0 0 580 185" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr-orch-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#555"/>
+          </marker>
+          <marker id="arr-orch-ctx" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#9c7fcc"/>
+          </marker>
+          <marker id="arr-orch-rna" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#e65c00"/>
+          </marker>
+          <marker id="arr-orch-cas" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#1565c0"/>
+          </marker>
+          <filter id="shadow-orch" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.08"/>
+          </filter>
+          <filter id="shadow-out" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1a1a2e" flood-opacity="0.2"/>
+          </filter>
+        </defs>
+
+        <!-- Input box -->
+        <rect x="8" y="62" width="90" height="62" rx="10" fill="white" stroke="#aaa" stroke-width="1.5" filter="url(#shadow-orch)"/>
+        <text x="53" y="87" text-anchor="middle" font-size="11" font-weight="700" fill="#555">Gene</text>
+        <text x="53" y="102" text-anchor="middle" font-size="10" fill="#bbb">+</text>
+        <text x="53" y="116" text-anchor="middle" font-size="11" font-weight="700" fill="#555">Cancer Type</text>
+
+        <!-- Arrow: input → Orchestra -->
+        <line x1="98" y1="93" x2="122" y2="93" stroke="#aaa" stroke-width="1.5" marker-end="url(#arr-orch-dark)"/>
+
+        <!-- Orchestra wrapper -->
+        <rect x="124" y="18" width="336" height="150" rx="12" fill="none" stroke="#9c7fcc" stroke-width="1" stroke-dasharray="6,3" opacity="0.6"/>
+        <text x="292" y="13" text-anchor="middle" font-size="10" font-weight="700" fill="#9c7fcc" opacity="0.85" letter-spacing="0.5">ORCHESTRA · LANGGRAPH DAG</text>
+
+        <!-- RegNetAgents box -->
+        <rect x="142" y="40" width="138" height="106" rx="10" fill="white" stroke="#e65c00" stroke-width="2" filter="url(#shadow-orch)"/>
+        <text x="211" y="68" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">RegNetAgents</text>
+        <text x="211" y="86" text-anchor="middle" font-size="9.5" fill="#aaa">GRN · Pathway</text>
+        <text x="211" y="101" text-anchor="middle" font-size="9.5" fill="#aaa">Regulatory context</text>
+        <text x="211" y="116" text-anchor="middle" font-size="9" fill="#ddd">WWTR1 · YAP1 · CHD4</text>
+        <text x="211" y="132" text-anchor="middle" font-size="9" fill="#ddd">Hippo · TP53 pathway</text>
+
+        <!-- Context arrow with label -->
+        <line x1="280" y1="93" x2="310" y2="93" stroke="#9c7fcc" stroke-width="1.8" stroke-dasharray="4,2" marker-end="url(#arr-orch-ctx)"/>
+        <text x="295" y="84" text-anchor="middle" font-size="9" fill="#9c7fcc" font-weight="600">GRN</text>
+        <text x="295" y="96" text-anchor="middle" font-size="9" fill="#9c7fcc" font-weight="600">context</text>
+
+        <!-- CASCADE box -->
+        <rect x="312" y="40" width="138" height="106" rx="10" fill="white" stroke="#1565c0" stroke-width="2" filter="url(#shadow-orch)"/>
+        <text x="381" y="68" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">CASCADE</text>
+        <text x="381" y="86" text-anchor="middle" font-size="9.5" fill="#aaa">Multi-omic · Targets</text>
+        <text x="381" y="101" text-anchor="middle" font-size="9.5" fill="#aaa">+ GRN context</text>
+        <text x="381" y="116" text-anchor="middle" font-size="9" fill="#ddd">GATA3 · FOXA1 · PGR</text>
+        <text x="381" y="132" text-anchor="middle" font-size="9" fill="#ddd">DepMap · STRING · SE</text>
+
+        <!-- Arrow: Orchestra → output -->
+        <line x1="460" y1="93" x2="484" y2="93" stroke="#1a1a2e" stroke-width="2" marker-end="url(#arr-orch-dark)"/>
+
+        <!-- Output box -->
+        <rect x="486" y="40" width="82" height="106" rx="10" fill="#1a1a2e" filter="url(#shadow-out)"/>
+        <text x="527" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="white">Unified</text>
+        <text x="527" y="94" text-anchor="middle" font-size="9.5" fill="#aaa">Causal</text>
+        <text x="527" y="108" text-anchor="middle" font-size="9.5" fill="#aaa">Chain +</text>
+        <text x="527" y="122" text-anchor="middle" font-size="9.5" fill="#aaa">Targets</text>
+        <text x="527" y="137" text-anchor="middle" font-size="9" fill="#555">Report</text>
+      </svg>
+
     </div>
   </div>
 </div>
@@ -766,34 +990,6 @@
 </div>
 -->
 
-<!-- BUILT ON -->
-<div class="builton-section">
-  <div class="builton-inner">
-    <h3>Built On</h3>
-    <div class="builton-cards">
-      <div class="builton-card">
-        <h4>GREmLN</h4>
-        <p>Graph-based single-cell foundation model that incorporates gene regulatory network topology into transformer attention — providing the gene embeddings and network structure that underpin RegNetAgents and CASCADE analyses.</p>
-        <div class="card-credit">Califano Lab · Chan Zuckerberg Biosciences NY</div>
-      </div>
-      <div class="builton-card">
-        <h4>ARACNe</h4>
-        <p>Algorithm for the Reconstruction of Accurate Cellular Networks. Mutual information-based approach for inferring transcription factor regulons from gene expression data, providing the regulatory network backbone used across both tools.</p>
-        <div class="card-credit">Califano Lab · Columbia University</div>
-      </div>
-      <div class="builton-card">
-        <h4>LangGraph</h4>
-        <p>Graph-based orchestration framework for multi-agent AI workflows. Provides the stateful DAG coordination layer that manages parallel agent execution, state passing, and conditional routing across both RegNetAgents and CASCADE.</p>
-        <div class="card-credit">LangChain, Inc.</div>
-      </div>
-      <div class="builton-card">
-        <h4>Claude / Anthropic</h4>
-        <p>Large language model powering the synthesis layer in both tools — integrating structured evidence from multiple agents into coherent biological interpretations via the Anthropic API and Model Context Protocol (MCP).</p>
-        <div class="card-credit">Anthropic</div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- SCRIPTURE -->
 <div class="scripture">
@@ -810,6 +1006,7 @@
 <footer>
   Bird AI Solutions &nbsp;·&nbsp; Jose Bird, PhD &nbsp;·&nbsp; 2026
   &nbsp;·&nbsp; <a href="mailto:joseabird@gmail.com">joseabird@gmail.com</a>
+  &nbsp;·&nbsp; <a href="https://github.com/jab57" target="_blank">GitHub</a>
 </footer>
 
 </body>
