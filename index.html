@@ -562,6 +562,44 @@
       A multi-agent LangGraph system for gene regulatory network analysis, combining ARACNe-derived TCGA networks with Reactome pathway enrichment and InterPro domain classification.
     </p>
 
+    <!-- Sample output -->
+    <div class="output-block">
+      <div class="output-header">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="output-title">regnetagents — ESR1 · breast cancer epithelial</span>
+        <span class="output-label output-label-rna">Sample Output</span>
+      </div>
+      <div class="output-body">
+<span class="out-query">$ query: gene=ESR1  cell_type=epithelial_cell  tcga_network=brca</span>
+
+<span class="out-section">▸ Network Context  <span class="out-dim">(ARACNe · GREmLN · ENSG00000091831)</span></span>
+  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>  <span class="out-dim">170 targets · 80 upstream regulators</span>
+  <span class="out-key">Target class      </span><span class="out-val">nuclear_receptor  ·  druggability = high</span>
+  <span class="out-key">Cascade targets (L1)</span><span class="out-val">CD47 · H4C3 · CTR9 · MBD5 · HLA-DOB</span>
+  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only  (absent in all immune cell types)</span>
+
+<span class="out-section">▸ Top Upstream Regulators  <span class="out-dim">(who controls ESR1)</span></span>
+  <span class="out-hi">CHD2</span><span class="out-val">   · FOXQ1 · TCF12 · BNC2 · AHCTF1 · NR1D2 · MAFF</span>
+  <span class="out-dim">  CHD2 = chromatin remodeler — epigenetic gatekeeper of ESR1 expression</span>
+
+<span class="out-section">▸ Pathway Enrichment  <span class="out-dim">(Reactome)</span></span>
+  <span class="out-val">1.  CHD1 and CHD2 subfamily              </span><span class="out-hi">p = 5.3e-06</span>  <span class="out-dim">R-HSA-9943411</span>
+  <span class="out-val">2.  Mitochondrial translation termination </span><span class="out-hi">p = 2.9e-05</span>  <span class="out-dim">R-HSA-5419276</span>
+  <span class="out-val">3.  CHD chromatin remodelers              </span><span class="out-hi">p = 9.7e-05</span>  <span class="out-dim">R-HSA-9937848</span>
+  <span class="out-val">4.  Negative regulation of CDH1 txn      </span><span class="out-hi">p = 1.4e-04</span>  <span class="out-dim">R-HSA-9764725</span>
+
+<span class="out-section">▸ Domain Analysis</span>
+  <span class="out-key">Cancer relevance  </span><span class="out-val">moderate  ·  biomarker = prognostic|predictive</span>
+  <span class="out-key">Drug development  </span><span class="out-val">nuclear_receptor · intervention = inhibition|activation</span>
+  <span class="out-key">Clinical priority </span><span class="out-hi">high</span>  <span class="out-dim">(epithelial-specific · hormone-sensitive cancers)</span>
+
+<div class="out-synthesis">
+  <strong>LLM Synthesis (Claude)</strong><br>
+  ESR1 is confirmed as a master regulator in breast cancer epithelial cells — the only cell type where it is active across the GREmLN network. With 80 upstream regulators and 170 downstream targets, it sits at the center of a tightly controlled transcriptional hub. The dominant pathway signal is CHD2-driven chromatin remodeling, identifying CHD2 as the epigenetic gatekeeper of ESR1 expression and a potential upstream intervention point. As a nuclear receptor, ESR1 is highly druggable via both inhibition (e.g., fulvestrant) and activation strategies. Cross-referencing with CASCADE's perturbation analysis of the same gene reveals the full picture: RegNetAgents maps the regulatory architecture of ESR1, while CASCADE quantifies the therapeutic consequences of disrupting it.
+</div>
+      </div>
+    </div>
+
     <div class="two-col">
       <!-- Left: info -->
       <div>
@@ -659,44 +697,6 @@
       </div>
     </div>
 
-    <!-- Sample output -->
-    <div class="output-block">
-      <div class="output-header">
-        <div class="dots"><span></span><span></span><span></span></div>
-        <span class="output-title">regnetagents — ESR1 · breast cancer epithelial</span>
-        <span class="output-label output-label-rna">Sample Output</span>
-      </div>
-      <div class="output-body">
-<span class="out-query">$ query: gene=ESR1  cell_type=epithelial_cell  tcga_network=brca</span>
-
-<span class="out-section">▸ Network Context  <span class="out-dim">(ARACNe · GREmLN · ENSG00000091831)</span></span>
-  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>  <span class="out-dim">170 targets · 80 upstream regulators</span>
-  <span class="out-key">Target class      </span><span class="out-val">nuclear_receptor  ·  druggability = high</span>
-  <span class="out-key">Cascade targets (L1)</span><span class="out-val">CD47 · H4C3 · CTR9 · MBD5 · HLA-DOB</span>
-  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only  (absent in all immune cell types)</span>
-
-<span class="out-section">▸ Top Upstream Regulators  <span class="out-dim">(who controls ESR1)</span></span>
-  <span class="out-hi">CHD2</span><span class="out-val">   · FOXQ1 · TCF12 · BNC2 · AHCTF1 · NR1D2 · MAFF</span>
-  <span class="out-dim">  CHD2 = chromatin remodeler — epigenetic gatekeeper of ESR1 expression</span>
-
-<span class="out-section">▸ Pathway Enrichment  <span class="out-dim">(Reactome)</span></span>
-  <span class="out-val">1.  CHD1 and CHD2 subfamily              </span><span class="out-hi">p = 5.3e-06</span>  <span class="out-dim">R-HSA-9943411</span>
-  <span class="out-val">2.  Mitochondrial translation termination </span><span class="out-hi">p = 2.9e-05</span>  <span class="out-dim">R-HSA-5419276</span>
-  <span class="out-val">3.  CHD chromatin remodelers              </span><span class="out-hi">p = 9.7e-05</span>  <span class="out-dim">R-HSA-9937848</span>
-  <span class="out-val">4.  Negative regulation of CDH1 txn      </span><span class="out-hi">p = 1.4e-04</span>  <span class="out-dim">R-HSA-9764725</span>
-
-<span class="out-section">▸ Domain Analysis</span>
-  <span class="out-key">Cancer relevance  </span><span class="out-val">moderate  ·  biomarker = prognostic|predictive</span>
-  <span class="out-key">Drug development  </span><span class="out-val">nuclear_receptor · intervention = inhibition|activation</span>
-  <span class="out-key">Clinical priority </span><span class="out-hi">high</span>  <span class="out-dim">(epithelial-specific · hormone-sensitive cancers)</span>
-
-<div class="out-synthesis">
-  <strong>LLM Synthesis (Claude)</strong><br>
-  ESR1 is confirmed as a master regulator in breast cancer epithelial cells — the only cell type where it is active across the GREmLN network. With 80 upstream regulators and 170 downstream targets, it sits at the center of a tightly controlled transcriptional hub. The dominant pathway signal is CHD2-driven chromatin remodeling, identifying CHD2 as the epigenetic gatekeeper of ESR1 expression and a potential upstream intervention point. As a nuclear receptor, ESR1 is highly druggable via both inhibition (e.g., fulvestrant) and activation strategies. Cross-referencing with CASCADE's perturbation analysis of the same gene reveals the full picture: RegNetAgents maps the regulatory architecture of ESR1, while CASCADE quantifies the therapeutic consequences of disrupting it.
-</div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -708,6 +708,45 @@
     <p class="project-tagline">
       Comprehensive multi-omic perturbation analysis integrating eight independent evidence sources — GREmLN embeddings, network propagation, STRING PPI, LINCS L1000, DoRothEA, DepMap CRISPR, super-enhancers, and cBioPortal — orchestrated by LangGraph to identify and rank therapeutic targets.
     </p>
+
+    <!-- Sample output -->
+    <div class="output-block">
+      <div class="output-header">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="output-title">cascade — ESR1 knockdown · breast cancer epithelial</span>
+        <span class="output-label output-label-cas">Sample Output</span>
+      </div>
+      <div class="output-body">
+<span class="out-query">$ query: gene=ESR1  perturbation=knockdown  context=Breast Cancer (epithelial_cell)</span>
+
+<span class="out-section out-section-cas">▸ Gene Classification  <span class="out-dim">(ENSG00000091831)</span></span>
+  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>
+  <span class="out-key">DoRothEA          </span><span class="out-val">validated · confidence </span><span class="out-hi">A</span>  <span class="out-dim">(752 curated targets)</span>
+  <span class="out-key">Network impact    </span><span class="out-val">3,080 affected genes · 126 direct targets</span>
+  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only (absent in all immune cell types)</span>
+
+<span class="out-section out-section-cas">▸ Multi-Evidence Target Rankings  <span class="out-dim">(top genes corroborated across sources)</span></span>
+  <span class="out-dim">Gene    Sources  Net Effect  Key Evidence</span>
+  <span class="out-dim">──────  ───────  ──────────  ────────────────────────────────</span>
+  <span class="out-hi">GATA3  </span><span class="out-val">  3       −2.238 ↓   net · regulators · targets (w=0.9999)</span>
+  <span class="out-val">MYB      3       −1.460 ↓   net · regulators · targets (w=0.9998)</span>
+  <span class="out-val">FOXA1    3       −1.249 ↓   net · regulators · STRING (0.406)</span>
+  <span class="out-val">PGR      3       —          DoRothEA A · regulators · targets (w=0.9994)</span>
+
+<span class="out-section out-section-cas">▸ Evidence Source Detail</span>
+  <span class="out-key">STRING PPI        </span><span class="out-val">IGF1R=</span><span class="out-hi">0.999</span><span class="out-val">  BRCA1=</span><span class="out-hi">0.999</span><span class="out-val">  PIK3R1=</span><span class="out-hi">0.994</span>  <span class="out-dim">(experimental)</span>
+  <span class="out-key">LINCS L1000       </span><span class="out-val">LTF </span><span class="out-hi">+0.015↑</span><span class="out-val">  MAP7 </span><span class="out-hi">−0.022↓</span><span class="out-val">  TNFSF10 </span><span class="out-hi">+0.015↑</span>
+  <span class="out-key">DepMap CRISPR     </span><span class="out-val">Breast mean Chronos </span><span class="out-hi">−0.318</span><span class="out-val"> (n=53)  pan-cancer mean −0.047</span>
+  <span class="out-key">Super-enhancer    </span><span class="out-val">present in MCF-7 + 2 cell types · </span><span class="out-hi">BRD4-sensitive</span>
+  <span class="out-key">DoRothEA A targets</span><span class="out-val">CCND1 · E2F1 · VEGFA · IGF1 · AKT1 · CDKN1A · RARA</span>
+  <span class="out-key">GREmLN embeddings </span><span class="out-dim">not available in this run (torch checkpoint not loaded)</span>
+
+<div class="out-synthesis out-synthesis-cas">
+  <strong>LLM Synthesis (Claude)</strong><br>
+  ESR1 knockdown in breast cancer epithelial cells disrupts a master regulatory hub affecting 3,080 downstream genes — with GATA3, MYB, and FOXA1 as the highest-confidence effectors, each corroborated by three independent evidence sources. STRING confirms direct physical coupling to IGF1R and BRCA1 (score 0.999), while DepMap CRISPR shows strong lineage-selective essentiality in breast (Chronos −0.318 across 53 lines) with minimal pan-cancer toxicity (−0.047), making ESR1 a clean lineage-specific target. Super-enhancer presence in MCF-7 cells and BRD4 sensitivity open a parallel epigenetic intervention angle via JQ1/OTX015. The DoRothEA A-confidence regulon (CCND1, E2F1, AKT1) further positions ESR1 as a master orchestrator of ER+ breast cancer proliferation.
+</div>
+      </div>
+    </div>
 
     <div class="two-col">
       <!-- Left: schematic -->
@@ -834,45 +873,6 @@
           <a href="https://github.com/jab57/CASCADE" target="_blank">GitHub →</a>
           <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">Zenodo DOI →</a>
         </div>
-      </div>
-    </div>
-
-    <!-- Sample output -->
-    <div class="output-block">
-      <div class="output-header">
-        <div class="dots"><span></span><span></span><span></span></div>
-        <span class="output-title">cascade — ESR1 knockdown · breast cancer epithelial</span>
-        <span class="output-label output-label-cas">Sample Output</span>
-      </div>
-      <div class="output-body">
-<span class="out-query">$ query: gene=ESR1  perturbation=knockdown  context=Breast Cancer (epithelial_cell)</span>
-
-<span class="out-section out-section-cas">▸ Gene Classification  <span class="out-dim">(ENSG00000091831)</span></span>
-  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>
-  <span class="out-key">DoRothEA          </span><span class="out-val">validated · confidence </span><span class="out-hi">A</span>  <span class="out-dim">(752 curated targets)</span>
-  <span class="out-key">Network impact    </span><span class="out-val">3,080 affected genes · 126 direct targets</span>
-  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only (absent in all immune cell types)</span>
-
-<span class="out-section out-section-cas">▸ Multi-Evidence Target Rankings  <span class="out-dim">(top genes corroborated across sources)</span></span>
-  <span class="out-dim">Gene    Sources  Net Effect  Key Evidence</span>
-  <span class="out-dim">──────  ───────  ──────────  ────────────────────────────────</span>
-  <span class="out-hi">GATA3  </span><span class="out-val">  3       −2.238 ↓   net · regulators · targets (w=0.9999)</span>
-  <span class="out-val">MYB      3       −1.460 ↓   net · regulators · targets (w=0.9998)</span>
-  <span class="out-val">FOXA1    3       −1.249 ↓   net · regulators · STRING (0.406)</span>
-  <span class="out-val">PGR      3       —          DoRothEA A · regulators · targets (w=0.9994)</span>
-
-<span class="out-section out-section-cas">▸ Evidence Source Detail</span>
-  <span class="out-key">STRING PPI        </span><span class="out-val">IGF1R=</span><span class="out-hi">0.999</span><span class="out-val">  BRCA1=</span><span class="out-hi">0.999</span><span class="out-val">  PIK3R1=</span><span class="out-hi">0.994</span>  <span class="out-dim">(experimental)</span>
-  <span class="out-key">LINCS L1000       </span><span class="out-val">LTF </span><span class="out-hi">+0.015↑</span><span class="out-val">  MAP7 </span><span class="out-hi">−0.022↓</span><span class="out-val">  TNFSF10 </span><span class="out-hi">+0.015↑</span>
-  <span class="out-key">DepMap CRISPR     </span><span class="out-val">Breast mean Chronos </span><span class="out-hi">−0.318</span><span class="out-val"> (n=53)  pan-cancer mean −0.047</span>
-  <span class="out-key">Super-enhancer    </span><span class="out-val">present in MCF-7 + 2 cell types · </span><span class="out-hi">BRD4-sensitive</span>
-  <span class="out-key">DoRothEA A targets</span><span class="out-val">CCND1 · E2F1 · VEGFA · IGF1 · AKT1 · CDKN1A · RARA</span>
-  <span class="out-key">GREmLN embeddings </span><span class="out-dim">not available in this run (torch checkpoint not loaded)</span>
-
-<div class="out-synthesis out-synthesis-cas">
-  <strong>LLM Synthesis (Claude)</strong><br>
-  ESR1 knockdown in breast cancer epithelial cells disrupts a master regulatory hub affecting 3,080 downstream genes — with GATA3, MYB, and FOXA1 as the highest-confidence effectors, each corroborated by three independent evidence sources. STRING confirms direct physical coupling to IGF1R and BRCA1 (score 0.999), while DepMap CRISPR shows strong lineage-selective essentiality in breast (Chronos −0.318 across 53 lines) with minimal pan-cancer toxicity (−0.047), making ESR1 a clean lineage-specific target. Super-enhancer presence in MCF-7 cells and BRD4 sensitivity open a parallel epigenetic intervention angle via JQ1/OTX015. The DoRothEA A-confidence regulon (CCND1, E2F1, AKT1) further positions ESR1 as a master orchestrator of ER+ breast cancer proliferation.
-</div>
       </div>
     </div>
 
