@@ -1,170 +1,816 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>RegNetAgents | CASCADE BRCA System</title>
+  <meta charset="UTF-8">
+  <title>Bird AI Solutions — Jose Bird, PhD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Open-source AI systems for gene regulatory network analysis and therapeutic target discovery — RegNetAgents and CASCADE by Jose Bird, PhD.">
+  <meta property="og:title" content="Bird AI Solutions — Jose Bird, PhD">
+  <meta property="og:description" content="Open-source AI systems for gene regulatory network analysis and therapeutic target discovery.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jab57.github.io">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bird AI Solutions — Jose Bird, PhD">
+  <meta name="twitter:description" content="Open-source AI systems for gene regulatory network analysis and therapeutic target discovery.">
   <style>
+    :root {
+      --rna: #e65c00;
+      --rna-light: #fff3e0;
+      --cas: #1565c0;
+      --cas-light: #e3f2fd;
+      --dark: #1a1a2e;
+      --mid: #555;
+      --border: #e8e8e8;
+      --light-bg: #f7f9fc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.65;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+    .nav-brand { font-weight: 700; font-size: 15px; color: var(--dark); letter-spacing: 0.3px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      color: var(--mid);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+
+    /* PUBLICATIONS */
+    .pubs-section {
+      padding: 70px 0;
+      background: #fff;
+      border-top: 1px solid var(--border);
+    }
+    .pubs-inner {
       max-width: 1100px;
       margin: 0 auto;
-      color: #111;
+      padding: 0 30px;
+    }
+    .pubs-inner h3 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 24px;
+    }
+    .pub-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid #f2f2f2;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-status {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      margin-top: 3px;
+    }
+    .status-prep { background: #fff3e0; color: #e65c00; }
+    .status-prep-cas { background: #e3f2fd; color: #1565c0; }
+    .pub-meta h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .pub-meta p { font-size: 13.5px; color: #888; line-height: 1.5; }
+
+    /* BUILT ON */
+    .builton-section {
+      background: var(--light-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 30px;
+    }
+    .builton-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .builton-section h3 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .builton-cards {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .builton-card {
       background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 26px;
+      max-width: 340px;
+      flex: 1;
+      min-width: 260px;
+    }
+    .builton-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .builton-card p {
+      font-size: 13.5px;
+      color: #777;
       line-height: 1.6;
     }
-
-    .brand {
-      text-align: center;
-      padding: 16px;
-      border-bottom: 1px solid #eee;
-      font-weight: 600;
-      color: #444;
+    .builton-card .card-credit {
+      font-size: 11.5px;
+      color: #bbb;
+      margin-top: 10px;
+      font-style: italic;
     }
 
+    /* HERO */
     .hero {
       text-align: center;
-      padding: 55px 20px;
-      background: linear-gradient(180deg, #fff, #f7f9fc);
+      padding: 90px 30px 70px;
+      background: linear-gradient(170deg, #fff 0%, #f0f4ff 60%, #fff 100%);
+    }
+    .hero-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #5c6bc0;
+      margin-bottom: 18px;
+      padding: 4px 14px;
+      border: 1px solid #c5cae9;
+      border-radius: 20px;
+    }
+    .hero h1 {
+      font-size: 50px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+    }
+    .hero-sub {
+      max-width: 580px;
+      margin: 0 auto 32px;
+      color: var(--mid);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 11px 26px;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-dark { background: var(--dark); color: #fff; }
+    .btn-dark:hover { background: #2d2d50; }
+    .btn-outline { border: 1.5px solid #ccc; color: var(--dark); background: #fff; }
+    .btn-outline:hover { border-color: #888; }
+
+    /* MAIN LAYOUT */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+
+    /* SECTION */
+    .project-section { padding: 80px 0; }
+    .project-section + .project-section { border-top: 1px solid var(--border); }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .eyebrow-rna { color: var(--rna); }
+    .eyebrow-cas { color: var(--cas); }
+
+    .project-section h2 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .project-tagline {
+      font-size: 17px;
+      color: var(--mid);
+      max-width: 680px;
+      margin-bottom: 40px;
+      line-height: 1.7;
     }
 
-    h1 { font-size: 42px; margin: 0; }
+    /* TWO COL */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
 
-    .tagline {
-      max-width: 900px;
-      margin: 10px auto;
+    /* FEATURE LIST */
+    .features { list-style: none; margin-bottom: 24px; }
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid #f2f2f2;
+      font-size: 14.5px;
       color: #444;
     }
-
-    .section { padding: 40px 20px; }
-
-    h2 { margin-bottom: 10px; }
-
-    .figure {
-      background: #fafafa;
-      border: 1px solid #e6e6e6;
-      border-radius: 10px;
-      padding: 15px;
-      margin-top: 20px;
+    .features li:last-child { border-bottom: none; }
+    .feat-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
     }
+    .dot-rna { background: var(--rna); }
+    .dot-cas { background: var(--cas); }
 
-    .caption {
+    /* PILLS */
+    .pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px; }
+    .pill {
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 600;
+      background: #f0f0f0;
+      color: #555;
+    }
+    .pill-rna { background: var(--rna-light); color: var(--rna); }
+    .pill-cas { background: var(--cas-light); color: var(--cas); }
+
+    /* PROJECT LINKS */
+    .project-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .project-links a {
       font-size: 13px;
-      color: #666;
-      margin-top: 10px;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+    .project-links a:hover { border-color: #666; }
+
+    /* FIGURE BOX */
+    .figure-box {
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      overflow: hidden;
+    }
+    .fig-caption {
+      font-size: 12px;
+      color: #999;
+      margin-top: 14px;
+      text-align: center;
+      line-height: 1.5;
     }
 
+    /* SCRIPTURE */
     .scripture {
+      background: linear-gradient(160deg, #fdfcff 0%, #f3f0ff 100%);
+      border-top: 1px solid #e8e8e8;
+      border-bottom: 1px solid #e8e8e8;
+      padding: 70px 30px;
       text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid #eee;
+    }
+    .scripture-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .scripture-mark {
+      font-size: 48px;
+      color: #c5b8f0;
+      line-height: 1;
+      margin-bottom: 16px;
+      font-family: Georgia, serif;
+    }
+    .scripture blockquote {
+      font-size: 20px;
       font-style: italic;
       color: #444;
+      line-height: 1.8;
+    }
+    .scripture cite {
+      display: block;
+      margin-top: 16px;
+      font-size: 13px;
+      font-style: normal;
+      color: #999;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
-    .footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      color: #777;
-      border-top: 1px solid #eee;
+    /* ABOUT */
+    .about-section {
+      background: #fff;
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
     }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: start;
+    }
+    @media (max-width: 720px) { .about-inner { grid-template-columns: 1fr; } }
+    .about-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 10px;
+    }
+    .about-inner h2 {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+    .about-body {
+      font-size: 15.5px;
+      color: #555;
+      line-height: 1.8;
+    }
+    .about-body p + p { margin-top: 14px; }
+
+    /* ORCHESTRA TEASER */
+    .teaser-section {
+      padding: 70px 0;
+      background: var(--light-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .teaser-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+    .teaser-inner h3 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 20px;
+    }
+    .teaser-card {
+      background: #fff;
+      border: 1.5px dashed #ccc;
+      border-radius: 14px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .teaser-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      background: #f0f0f0;
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .teaser-text h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .teaser-text p {
+      font-size: 14.5px;
+      color: #888;
+      max-width: 620px;
+      line-height: 1.65;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 13px;
+      color: #bbb;
+      background: #fff;
+    }
+    footer a {
+      color: #999;
+      text-decoration: none;
+      border-bottom: 1px solid #ddd;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: #555; }
   </style>
 </head>
-
 <body>
 
-<div class="brand">Bird AI Solutions</div>
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Bird AI Solutions</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#regnetagents">RegNetAgents</a>
+    <a href="#cascade">CASCADE</a>
+  </div>
+</nav>
 
+<!-- HERO -->
 <div class="hero">
-  <h1>RegNetAgents + CASCADE</h1>
-  <div class="tagline">
-    BRCA gene regulatory cascade inference from ARACNe + TCGA multi-omic integration
+  <div class="hero-label">Jose Bird, PhD</div>
+  <h1>AI Systems for<br>Computational Biology</h1>
+  <p class="hero-sub">
+    Open-source tools for gene regulatory network inference, multi-omic perturbation analysis, and therapeutic target discovery — built on LangGraph + MCP.
+  </p>
+  <div class="hero-btns">
+    <a href="#regnetagents" class="btn btn-dark">Explore Projects</a>
   </div>
 </div>
 
-<div class="section">
-  <h2>Cascade Propagation Model (Improved Biological Structure)</h2>
-
-  <div class="figure">
-<svg viewBox="0 0 900 420" width="100%" height="320">
-
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
-      <path d="M0,0 L0,6 L6,3 z" fill="#333"/>
-    </marker>
-  </defs>
-
-  <!-- EGFR (master upstream driver) -->
-  <circle cx="120" cy="210" r="22" fill="#d32f2f"/>
-  <text x="95" y="250">EGFR</text>
-
-  <!-- Layer 1 -->
-  <circle cx="280" cy="110" r="14" fill="#fb8c00"/>
-  <text x="250" y="100">PIK3CA</text>
-
-  <circle cx="280" cy="310" r="14" fill="#fb8c00"/>
-  <text x="260" y="340">AKT1</text>
-
-  <!-- Layer 2 (transcriptional integration) -->
-  <circle cx="450" cy="90" r="15" fill="#ffb74d"/>
-  <text x="430" y="80">MYC</text>
-
-  <circle cx="450" cy="210" r="15" fill="#424242"/>
-  <text x="430" y="240" fill="#444">TP53↓</text>
-
-  <circle cx="450" cy="330" r="15" fill="#ffb74d"/>
-  <text x="420" y="360">STAT3</text>
-
-  <!-- Layer 3 (dominant amplifier) -->
-  <circle cx="620" cy="210" r="20" fill="#66bb6a"/>
-  <text x="590" y="250">FOXM1</text>
-
-  <!-- Output module -->
-  <circle cx="790" cy="210" r="20" fill="#42a5f5"/>
-  <text x="760" y="250">Proliferation</text>
-
-  <!-- STRONG EGFR → PI3K / AKT -->
-  <line x1="140" y1="210" x2="265" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
-  <line x1="140" y1="210" x2="265" y2="310" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
-
-  <!-- PI3K / AKT → MYC / FOXM1 -->
-  <line x1="295" y1="110" x2="435" y2="90" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
-  <line x1="295" y1="310" x2="600" y2="210" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
-
-  <!-- MYC → FOXM1 (strong transcriptional coupling) -->
-  <line x1="465" y1="90" x2="600" y2="210" stroke="#222" stroke-width="2.5" marker-end="url(#arrow)"/>
-
-  <!-- STAT3 reinforcement (weaker) -->
-  <line x1="465" y1="330" x2="600" y2="210" stroke="#888" stroke-dasharray="4" marker-end="url(#arrow)"/>
-
-  <!-- TP53 constraint removal -->
-  <line x1="450" y1="210" x2="600" y2="210" stroke="#000" stroke-dasharray="2" opacity="0.3"/>
-
-  <!-- FOXM1 → proliferation (dominant edge) -->
-  <line x1="640" y1="210" x2="770" y2="210" stroke="#000" stroke-width="3" marker-end="url(#arrow)"/>
-
-  <!-- FAN-OUT from FOXM1 (key fix) -->
-  <line x1="620" y1="210" x2="620" y2="120" stroke="#666" marker-end="url(#arrow)"/>
-  <line x1="620" y1="210" x2="620" y2="300" stroke="#666" marker-end="url(#arrow)"/>
-
-</svg>
-
-    <div class="caption">
-      Figure 2. BRCA cascade model with FOXM1 as dominant amplification hub, EGFR upstream signaling, and MYC/PI3K parallel propagation arms derived from CASCADE + ARACNe inference.
+<!-- ABOUT -->
+<div class="about-section" id="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-label">About</div>
+      <h2>Jose Bird,<br>PhD</h2>
+    </div>
+    <div class="about-body">
+      <p>
+        I build open-source AI systems at the intersection of computational biology and large language models. My work focuses on making gene regulatory network analysis and therapeutic target discovery accessible, reproducible, and composable — integrating multi-omic data sources through LangGraph multi-agent architectures and the Model Context Protocol (MCP).
+      </p>
+      <p>
+        RegNetAgents and CASCADE are the first two components of a broader orchestration ecosystem designed to answer complex biological questions that no single tool can address alone. Both are released under open licenses with Zenodo DOIs for citability in peer-reviewed research.
+      </p>
     </div>
   </div>
 </div>
 
-<div class="scripture">
-  “Commit your works to the LORD, and your thoughts will be established.”
-  <br><br>
-  Proverbs 16:3 (NKJV)
+<!-- REGNETAGENTS -->
+<div class="project-section" id="regnetagents">
+  <div class="container">
+    <div class="section-eyebrow eyebrow-rna">Project 01</div>
+    <h2>RegNetAgents</h2>
+    <p class="project-tagline">
+      A multi-agent LangGraph system for gene regulatory network analysis, combining ARACNe-derived TCGA networks with Reactome pathway enrichment and InterPro domain classification.
+    </p>
+
+    <div class="two-col">
+      <!-- Left: info -->
+      <div>
+        <ul class="features">
+          <li><span class="feat-dot dot-rna"></span>GREmLN ARACNe networks — 11M cells, 10 cell types (CELLxGENE Census)</li>
+          <li><span class="feat-dot dot-rna"></span>TCGA tumor-state ARACNe networks for 8 cancer types</li>
+          <li><span class="feat-dot dot-rna"></span>Reactome pathway enrichment analysis per cell type</li>
+          <li><span class="feat-dot dot-rna"></span>InterPro protein domain classification</li>
+          <li><span class="feat-dot dot-rna"></span>LangGraph multi-agent DAG coordination</li>
+          <li><span class="feat-dot dot-rna"></span>10 immune and epithelial cell type contexts</li>
+          <li><span class="feat-dot dot-rna"></span>MCP server — composable with Claude Desktop</li>
+        </ul>
+        <div class="pills">
+          <span class="pill pill-rna">v1.0.1 stable</span>
+          <span class="pill">Python</span>
+          <span class="pill">LangGraph</span>
+          <span class="pill">MCP</span>
+          <span class="pill">TCGA</span>
+          <span class="pill">ARACNe</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/jab57/RegNetAgents" target="_blank">GitHub →</a>
+          <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">Zenodo DOI →</a>
+        </div>
+      </div>
+
+      <!-- Right: schematic -->
+      <div class="figure-box">
+        <svg viewBox="0 0 540 310" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arr-rna" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z" fill="#e65c00"/>
+            </marker>
+            <marker id="arr-gray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z" fill="#bbb"/>
+            </marker>
+            <filter id="shadow-rna" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#e65c00" flood-opacity="0.15"/>
+            </filter>
+            <filter id="shadow-sm" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.08"/>
+            </filter>
+          </defs>
+
+          <!-- Input box -->
+          <rect x="12" y="115" width="96" height="68" rx="10" fill="white" stroke="#e65c00" stroke-width="2" filter="url(#shadow-sm)"/>
+          <text x="60" y="141" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Gene</text>
+          <text x="60" y="156" text-anchor="middle" font-size="10" fill="#aaa">+</text>
+          <text x="60" y="171" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Cell Type</text>
+
+          <!-- Fan-out arrows -->
+          <line x1="108" y1="149" x2="158" y2="77" stroke="#e65c00" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-rna)"/>
+          <line x1="108" y1="149" x2="158" y2="149" stroke="#e65c00" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-rna)"/>
+          <line x1="108" y1="149" x2="158" y2="222" stroke="#e65c00" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr-rna)"/>
+
+          <!-- LangGraph container -->
+          <rect x="155" y="44" width="148" height="212" rx="12" fill="#fff9f5" stroke="#e65c00" stroke-width="1.2" stroke-dasharray="6,3" opacity="0.6"/>
+          <text x="229" y="35" text-anchor="middle" font-size="10" font-weight="700" fill="#e65c00" opacity="0.8" letter-spacing="0.5">LANGGRAPH DAG</text>
+
+          <!-- Agent 1: Network -->
+          <rect x="168" y="54" width="122" height="52" rx="8" fill="white" stroke="#e65c00" stroke-width="1.5" filter="url(#shadow-sm)"/>
+          <text x="229" y="75" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Network Agent</text>
+          <text x="229" y="93" text-anchor="middle" font-size="10" fill="#aaa">ARACNe · TCGA</text>
+
+          <!-- Agent 2: Pathway -->
+          <rect x="168" y="124" width="122" height="52" rx="8" fill="white" stroke="#e65c00" stroke-width="1.5" filter="url(#shadow-sm)"/>
+          <text x="229" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Pathway Agent</text>
+          <text x="229" y="163" text-anchor="middle" font-size="10" fill="#aaa">Reactome</text>
+
+          <!-- Agent 3: Domain -->
+          <rect x="168" y="194" width="122" height="52" rx="8" fill="white" stroke="#e65c00" stroke-width="1.5" filter="url(#shadow-sm)"/>
+          <text x="229" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Domain Agent</text>
+          <text x="229" y="233" text-anchor="middle" font-size="10" fill="#aaa">InterPro</text>
+
+          <!-- Fan-in arrows -->
+          <line x1="290" y1="80" x2="345" y2="143" stroke="#bbb" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+          <line x1="290" y1="150" x2="345" y2="150" stroke="#bbb" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+          <line x1="290" y1="220" x2="345" y2="158" stroke="#bbb" stroke-width="1.5" marker-end="url(#arr-gray)"/>
+
+          <!-- Synthesis node -->
+          <rect x="347" y="112" width="104" height="76" rx="10" fill="white" stroke="#e65c00" stroke-width="2" filter="url(#shadow-rna)"/>
+          <text x="399" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">LLM</text>
+          <text x="399" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Synthesis</text>
+          <text x="399" y="174" text-anchor="middle" font-size="9" fill="#aaa">Claude</text>
+
+          <!-- Arrow to output -->
+          <line x1="451" y1="150" x2="485" y2="150" stroke="#e65c00" stroke-width="2.5" marker-end="url(#arr-rna)"/>
+
+          <!-- Output box -->
+          <rect x="487" y="112" width="46" height="76" rx="10" fill="#e65c00" filter="url(#shadow-sm)"/>
+          <text x="510" y="148" text-anchor="middle" font-size="10" font-weight="700" fill="white">Gene</text>
+          <text x="510" y="164" text-anchor="middle" font-size="10" fill="#ffd0a8">Report</text>
+        </svg>
+        <div class="fig-caption">Parallel Network, Pathway, and Domain agents coordinated by a LangGraph DAG, with Claude LLM synthesis at the output.</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="footer">
-  Bird AI Solutions
+<!-- CASCADE -->
+<div class="project-section" id="cascade">
+  <div class="container">
+    <div class="section-eyebrow eyebrow-cas">Project 02</div>
+    <h2>CASCADE</h2>
+    <p class="project-tagline">
+      Comprehensive multi-omic perturbation analysis integrating seven independent evidence sources — network propagation, STRING PPI, LINCS L1000, DoRothEA, DepMap CRISPR, super-enhancers, and cBioPortal — to identify and rank therapeutic targets.
+    </p>
+
+    <div class="two-col">
+      <!-- Left: schematic -->
+      <div class="figure-box">
+        <svg viewBox="0 0 560 350" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arr-cas" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z" fill="#1565c0"/>
+            </marker>
+            <marker id="arr-cas-sm" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L7,3 z" fill="#90a4ae"/>
+            </marker>
+            <filter id="shadow-cas" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1565c0" flood-opacity="0.15"/>
+            </filter>
+            <filter id="shadow-sm2" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.07"/>
+            </filter>
+          </defs>
+
+          <!-- Input box -->
+          <rect x="10" y="141" width="96" height="68" rx="10" fill="white" stroke="#1565c0" stroke-width="2" filter="url(#shadow-sm2)"/>
+          <text x="58" y="167" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Gene</text>
+          <text x="58" y="182" text-anchor="middle" font-size="10" fill="#aaa">+</text>
+          <text x="58" y="197" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Cell Type</text>
+
+          <!-- 7 source boxes — evenly spaced vertically in viewBox 350 -->
+          <!-- y positions (center): 28, 75, 122, 175, 228, 275, 322 -->
+          <!-- Box height 34, so top = center - 17 -->
+
+          <!-- Source labels and positions -->
+          <!-- 1: Network Propagation cy=28 -->
+          <rect x="148" y="11" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="33" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Network Propagation</text>
+
+          <!-- 2: STRING PPI cy=75 -->
+          <rect x="148" y="58" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="80" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">STRING PPI</text>
+
+          <!-- 3: LINCS L1000 cy=122 -->
+          <rect x="148" y="105" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="127" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">LINCS L1000</text>
+
+          <!-- 4: DoRothEA TF Regulons cy=175 -->
+          <rect x="148" y="158" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="180" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DoRothEA TF Regulons</text>
+
+          <!-- 5: DepMap CRISPR cy=228 -->
+          <rect x="148" y="211" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="233" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DepMap CRISPR</text>
+
+          <!-- 6: Super-enhancers cy=275 -->
+          <rect x="148" y="258" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="280" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Super-enhancers</text>
+
+          <!-- 7: cBioPortal cy=322 -->
+          <rect x="148" y="305" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
+          <text x="213" y="327" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">cBioPortal</text>
+
+          <!-- Input → sources (fan out lines) -->
+          <line x1="106" y1="175" x2="147" y2="28" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="175" x2="147" y2="75" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="175" x2="147" y2="122" stroke="#1565c0" stroke-width="1.2" opacity="0.6" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="175" x2="147" y2="175" stroke="#1565c0" stroke-width="2" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="175" x2="147" y2="228" stroke="#1565c0" stroke-width="1.2" opacity="0.6" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="175" x2="147" y2="275" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
+          <line x1="106" y1="175" x2="147" y2="322" stroke="#1565c0" stroke-width="1" opacity="0.45" marker-end="url(#arr-cas)"/>
+
+          <!-- Sources → synthesis (fan in lines) -->
+          <line x1="278" y1="28" x2="370" y2="165" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="75" x2="370" y2="168" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="122" x2="370" y2="172" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="175" x2="370" y2="175" stroke="#90a4ae" stroke-width="2" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="228" x2="370" y2="178" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="275" x2="370" y2="182" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
+          <line x1="278" y1="322" x2="370" y2="185" stroke="#90a4ae" stroke-width="1" marker-end="url(#arr-cas-sm)"/>
+
+          <!-- Bracket label for sources -->
+          <rect x="142" y="4" width="143" height="340" rx="10" fill="none" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.3"/>
+
+          <!-- Synthesis box -->
+          <rect x="372" y="136" width="108" height="78" rx="10" fill="white" stroke="#1565c0" stroke-width="2.5" filter="url(#shadow-cas)"/>
+          <text x="426" y="165" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Evidence</text>
+          <text x="426" y="181" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Synthesis</text>
+          <text x="426" y="200" text-anchor="middle" font-size="9" fill="#aaa">LangGraph · Claude</text>
+
+          <!-- Arrow to output -->
+          <line x1="480" y1="175" x2="508" y2="175" stroke="#1565c0" stroke-width="2.5" marker-end="url(#arr-cas)"/>
+
+          <!-- Output box -->
+          <rect x="510" y="136" width="44" height="78" rx="10" fill="#1565c0" filter="url(#shadow-sm2)"/>
+          <text x="532" y="167" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">Target</text>
+          <text x="532" y="183" text-anchor="middle" font-size="9.5" fill="#bbdefb">Report</text>
+        </svg>
+        <div class="fig-caption">Seven independent evidence sources fan into a single evidence synthesis node, producing ranked therapeutic target reports per gene and cell type.</div>
+      </div>
+
+      <!-- Right: info -->
+      <div>
+        <ul class="features">
+          <li><span class="feat-dot dot-cas"></span>Network propagation from gene perturbation signals</li>
+          <li><span class="feat-dot dot-cas"></span>STRING protein–protein interaction scoring</li>
+          <li><span class="feat-dot dot-cas"></span>LINCS L1000 transcriptional perturbation data</li>
+          <li><span class="feat-dot dot-cas"></span>DoRothEA transcription factor regulon activity</li>
+          <li><span class="feat-dot dot-cas"></span>DepMap CRISPR essentiality screen integration</li>
+          <li><span class="feat-dot dot-cas"></span>Super-enhancer landscape analysis</li>
+          <li><span class="feat-dot dot-cas"></span>cBioPortal somatic mutation frequency</li>
+        </ul>
+        <div class="pills">
+          <span class="pill pill-cas">v1.0.1 stable</span>
+          <span class="pill">Python</span>
+          <span class="pill">LangGraph</span>
+          <span class="pill">MCP</span>
+          <span class="pill">Multi-omic</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/jab57/CASCADE" target="_blank">GitHub →</a>
+          <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">Zenodo DOI →</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- ORCHESTRA TEASER -->
+<div class="teaser-section">
+  <div class="teaser-inner">
+    <h3>Coming Soon</h3>
+    <div class="teaser-card">
+      <span class="teaser-badge">In Development</span>
+      <div class="teaser-text">
+        <h4>Orchestra</h4>
+        <p>An MCP orchestration layer that composes RegNetAgents and CASCADE into a unified analysis pipeline — coordinating parallel causal chain analysis, therapeutic target validation, and effector routing through a single LangGraph DAG.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUBLICATIONS — uncomment when JOSS submissions are live (~May–June 2026)
+<div class="pubs-section">
+  <div class="pubs-inner">
+    <h3>Publications</h3>
+    <div class="pub-item">
+      <span class="pub-status status-prep">Under Review</span>
+      <div class="pub-meta">
+        <h4>RegNetAgents: A Multi-Agent System for Gene Regulatory Network Interpretation</h4>
+        <p>Bird, J. &nbsp;·&nbsp; Journal of Open Source Software (JOSS)</p>
+      </div>
+    </div>
+    <div class="pub-item">
+      <span class="pub-status status-prep-cas">Under Review</span>
+      <div class="pub-meta">
+        <h4>CASCADE: Multi-Omic Perturbation Analysis for Therapeutic Target Discovery</h4>
+        <p>Bird, J. &nbsp;·&nbsp; Journal of Open Source Software (JOSS)</p>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- BUILT ON -->
+<div class="builton-section">
+  <div class="builton-inner">
+    <h3>Built On</h3>
+    <div class="builton-cards">
+      <div class="builton-card">
+        <h4>GREmLN</h4>
+        <p>Graph-based single-cell foundation model that incorporates gene regulatory network topology into transformer attention — providing the gene embeddings and network structure that underpin RegNetAgents and CASCADE analyses.</p>
+        <div class="card-credit">Califano Lab · Chan Zuckerberg Biosciences NY</div>
+      </div>
+      <div class="builton-card">
+        <h4>ARACNe</h4>
+        <p>Algorithm for the Reconstruction of Accurate Cellular Networks. Mutual information-based approach for inferring transcription factor regulons from gene expression data, providing the regulatory network backbone used across both tools.</p>
+        <div class="card-credit">Califano Lab · Columbia University</div>
+      </div>
+      <div class="builton-card">
+        <h4>LangGraph</h4>
+        <p>Graph-based orchestration framework for multi-agent AI workflows. Provides the stateful DAG coordination layer that manages parallel agent execution, state passing, and conditional routing across both RegNetAgents and CASCADE.</p>
+        <div class="card-credit">LangChain, Inc.</div>
+      </div>
+      <div class="builton-card">
+        <h4>Claude / Anthropic</h4>
+        <p>Large language model powering the synthesis layer in both tools — integrating structured evidence from multiple agents into coherent biological interpretations via the Anthropic API and Model Context Protocol (MCP).</p>
+        <div class="card-credit">Anthropic</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTURE -->
+<div class="scripture">
+  <div class="scripture-inner">
+    <div class="scripture-mark">"</div>
+    <blockquote>
+      Commit your works to the LORD,<br>and your thoughts will be established.
+      <cite>Proverbs 16:3 &nbsp;·&nbsp; NKJV</cite>
+    </blockquote>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Bird AI Solutions &nbsp;·&nbsp; Jose Bird, PhD &nbsp;·&nbsp; 2026
+  &nbsp;·&nbsp; <a href="mailto:joseabird@gmail.com">joseabird@gmail.com</a>
+</footer>
 
 </body>
 </html>
