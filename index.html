@@ -252,17 +252,39 @@
     .pill-cas { background: var(--cas-light); color: var(--cas); }
 
     /* PROJECT LINKS */
-    .project-links { display: flex; gap: 16px; flex-wrap: wrap; }
-    .project-links a {
+    .project-links { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-rna {
+      padding: 9px 20px;
+      border-radius: 7px;
       font-size: 13px;
       font-weight: 600;
-      color: var(--dark);
+      background: var(--rna);
+      color: #fff;
       text-decoration: none;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 1px;
-      transition: border-color 0.2s;
+      transition: opacity 0.2s;
     }
-    .project-links a:hover { border-color: #666; }
+    .btn-rna:hover { opacity: 0.85; }
+    .btn-cas {
+      padding: 9px 20px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      background: var(--cas);
+      color: #fff;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-cas:hover { opacity: 0.85; }
+    .link-secondary {
+      font-size: 13px;
+      font-weight: 600;
+      color: #999;
+      text-decoration: none;
+      border-bottom: 1.5px solid #e0e0e0;
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .link-secondary:hover { color: #555; border-color: #aaa; }
 
     /* SAMPLE OUTPUT */
     .output-block {
@@ -310,7 +332,9 @@
       line-height: 1.75;
       color: #c8ccd8;
       overflow-x: auto;
+      white-space: pre;
     }
+    .out-synthesis { white-space: normal; }
     .out-query { color: #7c8cf8; font-weight: 700; }
     .out-section {
       color: #e65c00;
@@ -529,12 +553,13 @@
 <!-- HERO -->
 <div class="hero">
   <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;">⬡ Bird AI Solutions</div>
-  <h1>AI Systems for<br>Computational Biology</h1>
+  <h1>Gene Regulatory Network Analysis<br>and Therapeutic Target Discovery</h1>
   <p class="hero-sub">
-    Open-source tools for gene regulatory network inference, multi-omic perturbation analysis, and therapeutic target discovery — built on LangGraph + MCP.
+    Open-source AI systems that map gene regulatory circuits and score therapeutic targets across eight independent evidence sources — designed for disease discovery pipelines and peer-reviewed research.
   </p>
   <div class="hero-btns">
     <a href="#regnetagents" class="btn btn-dark">Explore Projects</a>
+    <a href="mailto:jbird@birdaisolutions.com" class="btn btn-outline">Get in Touch</a>
   </div>
 </div>
 
@@ -546,18 +571,18 @@
       <div class="about-label">About</div>
       <h2>Jose Bird, PhD</h2>
       <p style="font-size:13px;color:#999;margin-top:10px;line-height:1.7;">
-        PhD, Statistics · UTSA<br>
-        MBA · UAA<br>
-        MS ChEE · UH<br>
-        BS ChEE · UPR Mayagüez
+        PhD, Statistics · UTSA
       </p>
     </div>
     <div class="about-body">
       <p>
-        I build open-source AI systems at the intersection of computational biology and large language models. My work focuses on making gene regulatory network analysis and therapeutic target discovery accessible, reproducible, and composable — integrating multi-omic data sources through LangGraph multi-agent architectures and the Model Context Protocol (MCP).
+        The central question driving this work: can AI systems learn the regulatory logic of the cell well enough to predict what happens when you intervene — and use that to accelerate disease treatment?
       </p>
       <p>
-        RegNetAgents and CASCADE are the first two components of a broader orchestration ecosystem designed to answer complex biological questions that no single tool can address alone. Both are released under open licenses with Zenodo DOIs for citability in peer-reviewed research.
+        RegNetAgents and CASCADE are the first steps toward that answer — open-source systems that compose multi-omic evidence into reproducible gene regulatory and perturbation analyses. A background in process optimization and statistical modeling shapes the approach: cells behave like control systems, gene circuits like feedback loops, and predicting the consequences of a gene perturbation is fundamentally an inference problem.
+      </p>
+      <p>
+        Both tools carry Zenodo DOIs for peer-reviewed citability and are built to reach disease treatment discovery pipelines, not just the computational biology literature. The longer ambition: applying process optimization techniques to model and steer cell behavior — where engineering rigor meets the complexity of living systems.
       </p>
     </div>
   </div>
@@ -573,6 +598,7 @@
     </p>
 
     <!-- Sample output -->
+    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what RegNetAgents tells you about <strong>ESR1</strong>, a master regulatory gene in breast cancer — who controls it, what it controls, and why it ranks as a high-priority drug target:</p>
     <div class="output-block">
       <div class="output-header">
         <div class="dots"><span></span><span></span><span></span></div>
@@ -631,8 +657,8 @@
           <span class="pill">ARACNe</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/jab57/RegNetAgents" target="_blank">GitHub →</a>
-          <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank">Zenodo DOI →</a>
+          <a href="https://github.com/jab57/RegNetAgents" target="_blank" class="btn-rna">View on GitHub →</a>
+          <a href="https://doi.org/10.5281/zenodo.18500027" target="_blank" class="link-secondary">Zenodo DOI →</a>
         </div>
       </div>
 
@@ -720,6 +746,7 @@
     </p>
 
     <!-- Sample output -->
+    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what CASCADE reveals when you ask what happens if you knock out ESR1 in breast cancer cells — ranked by evidence strength across eight independent data sources, from network propagation to CRISPR screens:</p>
     <div class="output-block">
       <div class="output-header">
         <div class="dots"><span></span><span></span><span></span></div>
@@ -880,8 +907,8 @@
           <span class="pill">Multi-omic</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/jab57/CASCADE" target="_blank">GitHub →</a>
-          <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank">Zenodo DOI →</a>
+          <a href="https://github.com/jab57/CASCADE" target="_blank" class="btn-cas">View on GitHub →</a>
+          <a href="https://doi.org/10.5281/zenodo.18883012" target="_blank" class="link-secondary">Zenodo DOI →</a>
         </div>
       </div>
     </div>
