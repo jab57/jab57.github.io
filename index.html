@@ -606,7 +606,10 @@
   <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;">⬡ Bird AI Solutions</div>
   <h1>Gene Regulatory Network Analysis<br>and Therapeutic Target Discovery</h1>
   <p class="hero-sub">
-    Open-source AI systems that map gene regulatory circuits and score therapeutic targets across seven independent evidence sources — designed for disease discovery pipelines and peer-reviewed research.
+    Finding the right therapeutic target takes weeks of manual literature review — and most candidates still fail in development. RegNetAgents and CASCADE compress that search into minutes, mapping gene regulatory circuits and scoring therapeutic targets across seven independent evidence sources.
+  </p>
+  <p style="font-size:15px;color:#888;max-width:560px;margin:0 auto 24px;line-height:1.7;">
+    <strong style="color:var(--rna);">RegNetAgents</strong> maps who controls what.&nbsp;&nbsp;<strong style="color:var(--cas);">CASCADE</strong> scores what happens when you intervene.&nbsp;&nbsp;Together they trace the full path from regulatory architecture to ranked therapeutic targets.
   </p>
   <div style="font-size:13px;color:#aaa;letter-spacing:0.5px;margin-bottom:28px;">2 open-source tools &nbsp;·&nbsp; 7 evidence sources &nbsp;·&nbsp; MCP-enabled</div>
   <div class="hero-btns">
@@ -654,6 +657,12 @@
 
     <!-- Sample output -->
     <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what RegNetAgents tells you about <strong>ESR1</strong>, a master regulatory gene in breast cancer — who controls it, what it controls, and why it ranks as a high-priority drug target:</p>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:18px;padding:14px 20px;background:#fff9f5;border-left:3px solid var(--rna);border-radius:0 8px 8px 0;font-size:13.5px;color:#555;">
+      <span><strong style="color:var(--rna);">170</strong> downstream targets</span>
+      <span><strong style="color:var(--rna);">80</strong> upstream regulators</span>
+      <span><strong style="color:var(--rna);">CHD2</strong> — epigenetic gatekeeper of ESR1</span>
+      <span><strong style="color:var(--rna);">Epithelial-specific</strong> — absent in all immune cell types</span>
+    </div>
     <div class="output-block">
       <div class="output-header">
         <div class="dots"><span></span><span></span><span></span></div>
@@ -802,6 +811,11 @@
 
     <!-- Sample output -->
     <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what CASCADE reveals when you ask what happens if you knock out ESR1 in breast cancer cells — ranked by evidence strength across seven independent evidence sources, from GREmLN embeddings to CRISPR screens:</p>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:18px;padding:14px 20px;background:#e3f2fd;border-left:3px solid var(--cas);border-radius:0 8px 8px 0;font-size:13.5px;color:#555;">
+      <span><strong style="color:var(--cas);">3,080</strong> genes affected by ESR1 knockdown</span>
+      <span><strong style="color:var(--cas);">Chronos −0.318</strong> — lineage-selective essentiality across 53 breast lines</span>
+      <span><strong style="color:var(--cas);">GATA3 · FOXA1 · MYB</strong> — top effectors across 3 independent sources</span>
+    </div>
     <div class="output-block">
       <div class="output-header">
         <div class="dots"><span></span><span></span><span></span></div>
@@ -840,6 +854,9 @@
       </div>
     </div>
 
+    <p style="font-size:12px;color:#bbb;margin-top:10px;margin-bottom:32px;line-height:1.7;font-style:italic;">
+      Biology shown is consistent with published literature: ESR1 master regulator status in ER+ breast cancer (TCGA Breast, <em>Nature</em> 2012; Carroll et al., <em>Science</em> 2006); FOXA1 as pioneer co-regulator (Lupien et al., <em>Cell</em> 2008); BRD4/super-enhancer sensitivity in MCF-7 (Loven et al., <em>Cell</em> 2013). DoRothEA A-confidence targets (CCND1, E2F1, AKT1) are curated from validated ChIP-seq data.
+    </p>
     <div class="two-col">
       <!-- Left: schematic -->
       <div class="figure-box">
@@ -975,10 +992,13 @@
 <div class="try-section" id="try-it">
   <div class="container">
     <div class="section-eyebrow" style="color:#9c7fcc;margin-bottom:10px;">Try It</div>
-    <h2 style="font-size:32px;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px;">Query Any Gene in Claude Desktop</h2>
-    <p style="font-size:17px;color:var(--mid);max-width:620px;margin-bottom:36px;line-height:1.7;">
-      Both tools ship as MCP servers — connect them to Claude Desktop (Anthropic's AI assistant) and run gene regulatory and perturbation analyses directly in conversation, no code required. If you can type a question, you can run the analysis.
+    <h2 style="font-size:32px;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px;">Run Your Gene in Claude Desktop</h2>
+    <p style="font-size:17px;color:var(--mid);max-width:620px;margin-bottom:24px;line-height:1.7;">
+      Both tools ship as MCP servers — connect them to Claude Desktop and run full regulatory and perturbation analyses in conversation, no code required. One question is all it takes.
     </p>
+    <div style="background:#1a1a2e;border-radius:10px;padding:14px 22px;max-width:620px;margin-bottom:32px;font-family:'SF Mono','Fira Code',monospace;font-size:13.5px;color:#7c8cf8;letter-spacing:0.2px;">
+      "Analyze ESR1 in breast cancer epithelial cells and identify the top therapeutic targets"
+    </div>
     <div class="try-steps">
       <div class="try-step">
         <div class="try-step-num">1</div>
@@ -998,7 +1018,7 @@
         <div class="try-step-num">3</div>
         <div>
           <div class="try-step-title">Query any gene</div>
-          <div class="try-step-body">Ask Claude: <em>"Analyze ESR1 in breast cancer epithelial cells"</em> — and get a full regulatory or perturbation report in seconds.</div>
+          <div class="try-step-body">Type a natural-language question like the one above — and get a full regulatory or perturbation report in seconds, with ranked targets and LLM synthesis.</div>
         </div>
       </div>
     </div>
