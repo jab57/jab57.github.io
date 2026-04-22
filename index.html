@@ -637,7 +637,7 @@
         RegNetAgents and CASCADE are the first steps toward that answer — open-source systems that compose multi-omic evidence into reproducible gene regulatory and perturbation analyses. Both carry Zenodo DOIs for peer-reviewed citability and are built for disease treatment discovery pipelines, not just the computational biology literature.
       </p>
       <p>
-        A background in process optimization shapes how I frame the problem: gene regulatory networks as feedback-controlled systems, disease intervention as the question of which perturbation, at which node, produces the desired cellular outcome.
+        A background in process optimization shapes how I frame the problem: gene regulatory networks as feedback-controlled systems with directional, signed edges — where activating and repressing interactions propagate perturbation effects downstream across the network. Disease intervention becomes an engineering question: which input, at which regulatory node, shifts the direction of downstream gene expression toward the desired cellular state?
       </p>
     </div>
   </div>
@@ -649,7 +649,7 @@
     <div class="section-eyebrow eyebrow-rna">Project 01</div>
     <h2>RegNetAgents</h2>
     <p class="project-tagline">
-      A multi-agent LangGraph system for gene regulatory network analysis, combining ARACNe-derived TCGA networks with Reactome pathway enrichment and InterPro domain classification.
+      A multi-agent LangGraph system for gene regulatory network analysis, combining ARACNe-derived GREmLN single-cell and TCGA tumor-state networks with Reactome pathway enrichment and InterPro domain classification.
     </p>
 
     <!-- Sample output -->
@@ -801,7 +801,7 @@
     </p>
 
     <!-- Sample output -->
-    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what CASCADE reveals when you ask what happens if you knock out ESR1 in breast cancer cells — ranked by evidence strength across eight independent data sources, from network propagation to CRISPR screens:</p>
+    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what CASCADE reveals when you ask what happens if you knock out ESR1 in breast cancer cells — ranked by evidence strength across seven independent evidence sources, from GREmLN embeddings to CRISPR screens:</p>
     <div class="output-block">
       <div class="output-header">
         <div class="dots"><span></span><span></span><span></span></div>
@@ -938,7 +938,7 @@
           <text x="532" y="187" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">Target</text>
           <text x="532" y="203" text-anchor="middle" font-size="9.5" fill="#bbdefb">Report</text>
         </svg>
-        <div class="fig-caption">Eight independent evidence sources — led by GREmLN embeddings — orchestrated by a LangGraph DAG, fanning into a single LLM synthesis node to produce ranked therapeutic target reports.</div>
+        <div class="fig-caption">Seven independent evidence sources — led by GREmLN embeddings — orchestrated by a LangGraph DAG, fanning into a single LLM synthesis node to produce ranked therapeutic target reports.</div>
       </div>
 
       <!-- Right: info -->
