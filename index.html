@@ -332,7 +332,11 @@
       line-height: 1.75;
       color: #c8ccd8;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       white-space: pre;
+    }
+    @media (max-width: 600px) {
+      .output-body { font-size: 11px; padding: 16px 14px; }
     }
     .out-synthesis { white-space: normal; }
     .out-query { color: #7c8cf8; font-weight: 700; }
