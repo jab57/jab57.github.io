@@ -47,7 +47,7 @@
       align-items: center;
       z-index: 100;
     }
-    .nav-brand { font-weight: 700; font-size: 15px; color: var(--dark); letter-spacing: 0.3px; }
+    .nav-brand { font-weight: 700; font-size: 18px; color: var(--dark); letter-spacing: 0.3px; }
     .nav-links { display: flex; gap: 28px; align-items: center; }
     .nav-links a {
       color: var(--mid);
@@ -353,6 +353,7 @@
     }
     .output-label-rna { background: #3d1a00; color: #e65c00; }
     .output-label-cas { background: #001a3d; color: #4d8fcc; }
+    .output-label-orch { background: #241a3d; color: #b89ee0; }
     .output-body {
       background: #12121f;
       padding: 22px 24px;
@@ -376,6 +377,7 @@
       display: block;
     }
     .out-section-cas { color: #4d8fcc; }
+    .out-section-orch { color: #b89ee0; }
     .out-key { color: #888; }
     .out-val { color: #e8e8e8; }
     .out-dim { color: #555; }
@@ -392,6 +394,7 @@
       line-height: 1.75;
     }
     .out-synthesis-cas { border-left-color: #4d8fcc; }
+    .out-synthesis-orch { border-left-color: #9c7fcc; }
     .out-synthesis strong { color: #e8e8e8; font-weight: 600; }
 
     /* FIGURE BOX */
@@ -624,7 +627,9 @@
     <a href="#about">About</a>
     <a href="#regnetagents">RegNetAgents</a>
     <a href="#cascade">CASCADE</a>
+    <a href="#orchestra">Orchestra</a>
     <a href="#try-it">Try It</a>
+    <a href="#publications">Publications</a>
     <a href="mailto:jbird@birdaisolutions.com">Contact →</a>
   </div>
 </nav>
@@ -634,12 +639,12 @@
   <div style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:12px;">⬡ Bird AI Solutions</div>
   <h1>Gene Regulatory Network Analysis<br>and Therapeutic Target Discovery</h1>
   <p class="hero-sub">
-    Finding the right therapeutic target takes weeks of manual literature review — and most candidates still fail in development. RegNetAgents and CASCADE compress that analysis into minutes, mapping gene regulatory circuits and scoring therapeutic targets across seven independent evidence sources.
+    Finding the right therapeutic target takes weeks of manual literature review — and most candidates still fail in development. RegNetAgents and CASCADE compress that analysis into minutes, mapping gene regulatory circuits and scoring therapeutic targets across eight independent evidence sources.
   </p>
   <p style="font-size:15px;color:#888;max-width:560px;margin:0 auto 24px;line-height:1.7;">
-    <strong style="color:var(--rna);">RegNetAgents</strong> maps who controls what.&nbsp;&nbsp;<strong style="color:var(--cas);">CASCADE</strong> scores what happens when you intervene.&nbsp;&nbsp;Together they trace the full path from regulatory architecture to ranked therapeutic targets.
+    <strong style="color:var(--rna);">RegNetAgents</strong> maps who controls what.&nbsp;&nbsp;<strong style="color:var(--cas);">CASCADE</strong> scores what happens when you intervene.&nbsp;&nbsp;<strong style="color:#9c7fcc;">Orchestra</strong> composes both into a single causal chain report.
   </p>
-  <div style="font-size:13px;color:#aaa;letter-spacing:0.5px;margin-bottom:28px;">2 open-source tools &nbsp;·&nbsp; 7 evidence sources &nbsp;·&nbsp; MCP-enabled</div>
+  <div style="font-size:13px;color:#aaa;letter-spacing:0.5px;margin-bottom:28px;">3 open-source tools &nbsp;·&nbsp; 8 evidence sources &nbsp;·&nbsp; MCP-enabled</div>
   <div class="hero-btns">
     <a href="#regnetagents" class="btn btn-dark">Explore Projects</a>
     <a href="mailto:jbird@birdaisolutions.com" class="btn btn-outline">jbird@birdaisolutions.com</a>
@@ -653,11 +658,12 @@
     <div>
       <div class="about-label">About</div>
       <h2>Jose Bird, PhD</h2>
+      <p style="font-size:14.5px;color:#666;font-weight:600;margin-top:4px;">AI Systems Architect &amp; Builder</p>
       <p style="font-size:13px;color:#999;margin-top:10px;line-height:1.9;">
         PhD, Statistics · UTSA<br>
         MBA · UAA<br>
         MCHEE · University of Houston<br>
-        BS ChEE · UPR Mayagüez<br>
+        BS ChEE · UPR Mayagüez<br><br>
         AI/ML · Process Optimization · Simulation · Operations Research
       </p>
     </div>
@@ -666,7 +672,7 @@
         The central question driving this work: can AI systems learn the regulatory logic of the cell well enough to predict what happens when you intervene — and use that to accelerate disease treatment?
       </p>
       <p>
-        RegNetAgents and CASCADE are the first steps toward that answer — open-source systems that compose multi-omic evidence into reproducible gene regulatory and perturbation analyses. Both carry Zenodo DOIs for peer-reviewed citability and are built for disease treatment discovery pipelines, not just the computational biology literature.
+        RegNetAgents and CASCADE are the first steps toward that answer — open-source systems that compose multi-omic evidence into reproducible gene regulatory and perturbation analyses. Both carry Zenodo DOIs for peer-reviewed citability and are built for disease treatment discovery pipelines, not just the computational biology literature. Orchestra composes them into a single MCP layer, and the underlying methodology is documented in two preprints, on arXiv and Research Square.
       </p>
       <p>
         A background in process optimization shapes how I frame the problem: gene regulatory networks as feedback-controlled systems with directional, signed edges — where activating and repressing interactions propagate perturbation effects downstream across the network. Disease intervention becomes an engineering question: which input, at which regulatory node, shifts the direction of downstream gene expression toward the desired cellular state?
@@ -681,68 +687,66 @@
     <div class="section-eyebrow eyebrow-rna">Project 01</div>
     <h2>RegNetAgents</h2>
     <p class="project-tagline">
-      A multi-agent LangGraph system for gene regulatory network analysis, combining ARACNe-derived GREmLN single-cell and TCGA tumor-state networks with Reactome pathway enrichment and InterPro domain classification.
+      A multi-agent LangGraph system for gene regulatory network analysis, classifying candidate regulators across two independently-inferred ARACNe network sources — GREmLN single-cell and TCGA tumor-state — filtering against curated cancer-gene annotation (OncoKB), and annotating regulatory direction (mode-of-action).
     </p>
 
     <!-- Sample output -->
-    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what RegNetAgents tells you about <strong>ESR1</strong>, a master regulatory gene in breast cancer — who controls it, what it controls, and why it ranks as a high-priority drug target:</p>
+    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's the analysis behind RegNetAgents' published validation: <strong>CTNNB1</strong>'s regulatory neighborhood in breast cancer, cross-classified by network source and filtered against curated cancer-gene annotation — the basis of a peer-reviewed statistical claim, not just a demo:</p>
     <div style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:18px;padding:14px 20px;background:#fff9f5;border-left:3px solid var(--rna);border-radius:0 8px 8px 0;font-size:13.5px;color:#555;">
-      <span><strong style="color:var(--rna);">170</strong> downstream targets</span>
-      <span><strong style="color:var(--rna);">80</strong> upstream regulators</span>
-      <span><strong style="color:var(--rna);">CHD2</strong> — top predicted epigenetic regulator of ESR1 (ARACNe network)</span>
-      <span><strong style="color:var(--rna);">Epithelial-specific</strong> — absent in all immune cell types</span>
+      <span><strong style="color:var(--rna);">Stouffer Z = 6.69 / 6.95</strong> — OncoKB enrichment of TCGA-only candidates, BRCA / COAD (both p &lt; 0.0001)</span>
+      <span><strong style="color:var(--rna);">OR = 15.27</strong> — CTNNB1's enrichment, the strongest of 11 BRCA focal genes tested</span>
+      <span><strong style="color:var(--rna);">0</strong> significant enrichment in housekeeping or neutral control genes</span>
     </div>
     <div class="output-block">
       <div class="output-header">
         <div class="dots"><span></span><span></span><span></span></div>
-        <span class="output-title">regnetagents — ESR1 · breast cancer epithelial</span>
-        <span class="output-label output-label-rna">Sample Output</span>
+        <span class="output-title">regnetagents — CTNNB1 · compare_network_contexts · BRCA</span>
+        <span class="output-label output-label-rna">Published Validation</span>
       </div>
       <div class="output-body">
-<span class="out-query">$ query: gene=ESR1  cell_type=epithelial_cell  tcga_network=brca</span>
+<span class="out-query">$ query: gene=CTNNB1  cell_type=epithelial_cell  tcga_network=brca  operation=compare_network_contexts</span>
 
-<span class="out-section">▸ Network Context  <span class="out-dim">(ARACNe · GREmLN · ENSG00000091831)</span></span>
-  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>  <span class="out-dim">170 targets · 80 upstream regulators</span>
-  <span class="out-key">Target class      </span><span class="out-val">nuclear_receptor  ·  druggability = high</span>
-  <span class="out-key">Cascade targets (L1)</span><span class="out-val">CD47 · H4C3 · CTR9 · MBD5 · HLA-DOB</span>
-  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only  (absent in all immune cell types)</span>
+<span class="out-section">▸ Cross-Network Classification  <span class="out-dim">(GREmLN epithelial_cell ∩ TCGA BRCA ARACNe)</span></span>
+  <span class="out-key">Regulator source  </span><span class="out-val">TCGA-only: 10 · GREmLN-only: 18 · Both: 0</span>
+  <span class="out-key">Context-specificity</span><span class="out-hi">1 − J = 1.00</span>  <span class="out-dim">near-complete non-overlap between network sources</span>
 
-<span class="out-section">▸ Top Upstream Regulators  <span class="out-dim">(who controls ESR1)</span></span>
-  <span class="out-hi">CHD2</span><span class="out-val">   · FOXQ1 · TCF12 · BNC2 · AHCTF1 · NR1D2 · MAFF</span>
-  <span class="out-dim">  CHD2 = chromatin remodeler — epigenetic gatekeeper of ESR1 expression</span>
+<span class="out-section">▸ TCGA-only Candidates × OncoKB  <span class="out-dim">(4 of 10 overlap, MoA-annotated)</span></span>
+  <span class="out-hi">YAP1  </span><span class="out-val">  Oncogene   MoA ≈ +1.00   Activating</span>
+  <span class="out-val">DDR2    Oncogene   MoA ≈ +1.00   Activating</span>
+  <span class="out-val">IL6ST   Oncogene   MoA ≈ +1.00   Activating</span>
+  <span class="out-val">ARID3A  TSG        MoA ≈ −1.00   Repressive</span>
 
-<span class="out-section">▸ Pathway Enrichment  <span class="out-dim">(Reactome)</span></span>
-  <span class="out-val">1.  CHD1 and CHD2 subfamily              </span><span class="out-hi">p = 5.3e-06</span>  <span class="out-dim">R-HSA-9943411</span>
-  <span class="out-val">2.  Mitochondrial translation termination </span><span class="out-hi">p = 2.9e-05</span>  <span class="out-dim">R-HSA-5419276</span>
-  <span class="out-val">3.  CHD chromatin remodelers              </span><span class="out-hi">p = 9.7e-05</span>  <span class="out-dim">R-HSA-9937848</span>
-  <span class="out-val">4.  Negative regulation of CDH1 txn      </span><span class="out-hi">p = 1.4e-04</span>  <span class="out-dim">R-HSA-9764725</span>
+<span class="out-section">▸ Enrichment  <span class="out-dim">(Fisher's exact, one-tailed, vs. TCGA BRCA gene universe)</span></span>
+  <span class="out-key">OncoKB OR         </span><span class="out-hi">15.27</span>  <span class="out-val">BH-FDR p = 0.003  ·  permutation p ≤ 0.01 (1,000 draws)</span>
 
-<span class="out-section">▸ Domain Analysis</span>
-  <span class="out-key">Cancer relevance  </span><span class="out-val">moderate  ·  biomarker = prognostic|predictive</span>
-  <span class="out-key">Drug development  </span><span class="out-val">nuclear_receptor · intervention = inhibition|activation</span>
-  <span class="out-key">Clinical priority </span><span class="out-hi">high</span>  <span class="out-dim">(epithelial-specific · hormone-sensitive cancers)</span>
+<span class="out-section">▸ Panel-Level Validation  <span class="out-dim">(11 BRCA focal genes)</span></span>
+  <span class="out-key">Combined enrichment</span><span class="out-hi">Stouffer Z = 6.69</span>  <span class="out-val">p &lt; 0.0001</span>
+  <span class="out-key">Negative controls  </span><span class="out-val">housekeeping (ACTB, GAPDH...) and neutral tumor genes (FASN, PCNA...) — no significant enrichment</span>
 
 <div class="out-synthesis">
   <strong>LLM Synthesis (Claude)</strong><br>
-  ESR1 is confirmed as a master regulator in breast cancer epithelial cells — the only cell type where it is active across the GREmLN network. With 80 upstream regulators and 170 downstream targets, it sits at the center of a tightly controlled transcriptional hub. The dominant pathway signal is CHD2-driven chromatin remodeling, identifying CHD2 as the epigenetic gatekeeper of ESR1 expression and a potential upstream intervention point. As a nuclear receptor, ESR1 is highly druggable via both inhibition (e.g., fulvestrant) and activation strategies. Cross-referencing with CASCADE's perturbation analysis of the same gene reveals the full picture: RegNetAgents maps the regulatory architecture of ESR1, while CASCADE quantifies the therapeutic consequences of disrupting it.
+  CTNNB1's TCGA-only regulatory neighborhood is significantly enriched for OncoKB cancer genes (OR = 15.27), with three of four candidates carrying activating mode-of-action annotations consistent with therapeutic inhibition — YAP1 independently corroborated by established Wnt/β-catenin crosstalk literature. This candidate list survives permutation testing and negative controls: housekeeping genes and tumor-expressed non-driver genes of comparable candidate-set size show no such enrichment. The pattern replicates independently in a second network source (GREmLN-only candidates, Z = 5.51) and a second cancer type (COAD, Z = 6.95), supporting genuine cancer regulatory signal rather than a network-topology artifact.
 </div>
       </div>
     </div>
+    <p style="font-size:12px;color:#bbb;margin-top:10px;margin-bottom:32px;line-height:1.7;font-style:italic;">
+      This cross-network enrichment test — not the pathway/domain output below — is the paper's core statistical claim, independently validated in two cancer types (BRCA, COAD) against two negative-control gene panels. A single MCP query in Claude Desktop reproduces the classification and candidate shortlist shown above (top three sections); the Stouffer Z, permutation, and negative-control statistics come from the paper's batch analysis script run across all 11–12 focal genes per cancer type, not from any one live query. Bird, J. (2026). RegNetAgents: A Multi-Agent Framework for Cross-Network Regulatory Driver Identification in Cancer Genomics. arXiv:2607.14097.
+    </p>
 
     <div class="two-col">
       <!-- Left: info -->
       <div>
         <ul class="features">
+          <li><span class="feat-dot dot-rna"></span>Dual-network source classification — TCGA-only / GREmLN-only / Both, with Jaccard context-specificity scoring</li>
+          <li><span class="feat-dot dot-rna"></span>OncoKB filtering + mode-of-action (activating/repressive) annotation per candidate</li>
+          <li><span class="feat-dot dot-rna"></span>Validated by Fisher's exact enrichment, 1,000-draw permutation controls, and negative-control gene panels</li>
           <li><span class="feat-dot dot-rna"></span>GREmLN ARACNe networks — 11M cells, 10 cell types (CELLxGENE Census)</li>
-          <li><span class="feat-dot dot-rna"></span>TCGA tumor-state ARACNe networks for 8 cancer types</li>
-          <li><span class="feat-dot dot-rna"></span>Reactome pathway enrichment analysis per cell type</li>
-          <li><span class="feat-dot dot-rna"></span>InterPro protein domain classification</li>
-          <li><span class="feat-dot dot-rna"></span>LangGraph multi-agent DAG coordination</li>
-          <li><span class="feat-dot dot-rna"></span>10 immune and epithelial cell type contexts</li>
+          <li><span class="feat-dot dot-rna"></span>TCGA tumor-state ARACNe networks for 14 cancer types</li>
+          <li><span class="feat-dot dot-rna"></span>Reactome pathway enrichment and InterPro domain classification (comprehensive_gene_analysis)</li>
           <li><span class="feat-dot dot-rna"></span>MCP server — composable with Claude Desktop</li>
         </ul>
         <div class="pills">
-          <span class="pill pill-rna">v1.0.1 stable</span>
+          <span class="pill pill-rna">v1.2.4 stable</span>
           <span class="pill">Python</span>
           <span class="pill">LangGraph</span>
           <span class="pill">MCP</span>
@@ -788,20 +792,20 @@
           <rect x="155" y="44" width="148" height="212" rx="12" fill="#fff9f5" stroke="#e65c00" stroke-width="1.2" stroke-dasharray="6,3" opacity="0.6"/>
           <text x="229" y="35" text-anchor="middle" font-size="10" font-weight="700" fill="#e65c00" opacity="0.8" letter-spacing="0.5">LANGGRAPH DAG</text>
 
-          <!-- Agent 1: Network -->
+          <!-- Agent 1: GREmLN -->
           <rect x="168" y="54" width="122" height="52" rx="8" fill="white" stroke="#e65c00" stroke-width="1.5" filter="url(#shadow-sm)"/>
-          <text x="229" y="75" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Network Agent</text>
-          <text x="229" y="93" text-anchor="middle" font-size="10" fill="#aaa">ARACNe · TCGA</text>
+          <text x="229" y="75" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">GREmLN Query</text>
+          <text x="229" y="93" text-anchor="middle" font-size="10" fill="#aaa">single-cell ARACNe</text>
 
-          <!-- Agent 2: Pathway -->
+          <!-- Agent 2: TCGA -->
           <rect x="168" y="124" width="122" height="52" rx="8" fill="white" stroke="#e65c00" stroke-width="1.5" filter="url(#shadow-sm)"/>
-          <text x="229" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Pathway Agent</text>
-          <text x="229" y="163" text-anchor="middle" font-size="10" fill="#aaa">Reactome</text>
+          <text x="229" y="145" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">TCGA Query</text>
+          <text x="229" y="163" text-anchor="middle" font-size="10" fill="#aaa">tumor-state ARACNe</text>
 
-          <!-- Agent 3: Domain -->
+          <!-- Agent 3: Classify + Filter -->
           <rect x="168" y="194" width="122" height="52" rx="8" fill="white" stroke="#e65c00" stroke-width="1.5" filter="url(#shadow-sm)"/>
-          <text x="229" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Domain Agent</text>
-          <text x="229" y="233" text-anchor="middle" font-size="10" fill="#aaa">InterPro</text>
+          <text x="229" y="211" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Classify + Filter</text>
+          <text x="229" y="229" text-anchor="middle" font-size="10" fill="#aaa">source · OncoKB · MoA</text>
 
           <!-- Fan-in arrows -->
           <line x1="290" y1="80" x2="345" y2="143" stroke="#bbb" stroke-width="1.5" marker-end="url(#arr-gray)"/>
@@ -810,19 +814,19 @@
 
           <!-- Synthesis node -->
           <rect x="347" y="112" width="104" height="76" rx="10" fill="white" stroke="#e65c00" stroke-width="2" filter="url(#shadow-rna)"/>
-          <text x="399" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">LLM</text>
-          <text x="399" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Synthesis</text>
-          <text x="399" y="174" text-anchor="middle" font-size="9" fill="#aaa">Claude</text>
+          <text x="399" y="138" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Enrichment</text>
+          <text x="399" y="154" text-anchor="middle" font-size="11" font-weight="700" fill="#e65c00">Test</text>
+          <text x="399" y="172" text-anchor="middle" font-size="9" fill="#aaa">Fisher's exact + perm.</text>
 
           <!-- Arrow to output -->
           <line x1="451" y1="150" x2="485" y2="150" stroke="#e65c00" stroke-width="2.5" marker-end="url(#arr-rna)"/>
 
           <!-- Output box -->
           <rect x="487" y="112" width="46" height="76" rx="10" fill="#e65c00" filter="url(#shadow-sm)"/>
-          <text x="510" y="148" text-anchor="middle" font-size="10" font-weight="700" fill="white">Gene</text>
-          <text x="510" y="164" text-anchor="middle" font-size="10" fill="#ffd0a8">Report</text>
+          <text x="510" y="148" text-anchor="middle" font-size="10" font-weight="700" fill="white">Ranked</text>
+          <text x="510" y="164" text-anchor="middle" font-size="10" fill="#ffd0a8">Shortlist</text>
         </svg>
-        <div class="fig-caption">Parallel Network, Pathway, and Domain agents coordinated by a LangGraph DAG, with Claude LLM synthesis at the output.</div>
+        <div class="fig-caption">GREmLN and TCGA network queries run in parallel, classified by source and filtered against OncoKB with MoA annotation, then validated by Fisher's exact enrichment with permutation controls.</div>
       </div>
     </div>
 
@@ -835,61 +839,61 @@
     <div class="section-eyebrow eyebrow-cas">Project 02</div>
     <h2>CASCADE</h2>
     <p class="project-tagline">
-      Comprehensive multi-omic perturbation analysis integrating seven independent evidence sources — GREmLN embeddings, STRING PPI, LINCS L1000, DoRothEA, DepMap CRISPR, super-enhancers, and cBioPortal — orchestrated by LangGraph to identify and rank therapeutic targets.
+      An agentic framework that predicts downstream transcriptional effects of gene knockdown or overexpression by propagating signed perturbation signals through ARACNe regulatory networks — validated not against curated gene lists, but against real patient tumor expression data.
     </p>
 
     <!-- Sample output -->
-    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what CASCADE reveals when you ask what happens if you knock out ESR1 in breast cancer cells — ranked by evidence strength across seven independent evidence sources, from GREmLN embeddings to CRISPR screens:</p>
+    <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's CASCADE's published validation: do its <strong>MYC</strong> knockdown predictions actually match what happens in real tumors? We compared predicted target direction against real patient expression — using MYC copy-number amplification as a dosage proxy — across three independent TCGA cancer types plus a fully independent cohort:</p>
     <div style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:18px;padding:14px 20px;background:#e3f2fd;border-left:3px solid var(--cas);border-radius:0 8px 8px 0;font-size:13.5px;color:#555;">
-      <span><strong style="color:var(--cas);">3,080</strong> genes affected by ESR1 knockdown</span>
-      <span><strong style="color:var(--cas);">Chronos −0.318</strong> — knocking out ESR1 kills breast cancer cells but has almost no effect in other cancer types (−0.047), across 53 DepMap lines</span>
-      <span><strong style="color:var(--cas);">GATA3 · FOXA1 · MYB</strong> — top effectors across 3 independent sources</span>
+      <span><strong style="color:var(--cas);">90.0% / 72.0% / 85.7%</strong> concordance with real patient data — BRCA / COAD / STAD (all p &lt; 0.002)</span>
+      <span><strong style="color:var(--cas);">87.2%</strong> — replicated in METABRIC, an independent cohort with zero data overlap with CASCADE's networks</span>
+      <span><strong style="color:var(--cas);">9 of 15</strong> additional genes validate — proliferation-machinery genes replicate, lineage-identity TFs (GATA3, ESR1, FOXA1) do not</span>
     </div>
     <div class="output-block">
       <div class="output-header">
         <div class="dots"><span></span><span></span><span></span></div>
-        <span class="output-title">cascade — ESR1 knockdown · breast cancer epithelial</span>
-        <span class="output-label output-label-cas">Sample Output</span>
+        <span class="output-title">cascade — MYC knockdown · patient-data concordance</span>
+        <span class="output-label output-label-cas">Published Validation</span>
       </div>
       <div class="output-body">
-<span class="out-query">$ query: gene=ESR1  perturbation=knockdown  context=Breast Cancer (epithelial_cell)</span>
+<span class="out-query">$ query: gene=MYC  perturbation=knockdown  network_source=tcga  tcga_network=brca  top_k=50</span>
 
-<span class="out-section out-section-cas">▸ Gene Classification  <span class="out-dim">(ENSG00000091831)</span></span>
-  <span class="out-key">Role              </span><span class="out-hi">master_regulator</span>
-  <span class="out-key">DoRothEA          </span><span class="out-val">validated · confidence </span><span class="out-hi">A</span>  <span class="out-dim">(752 curated targets)</span>
-  <span class="out-key">Network impact    </span><span class="out-val">3,080 affected genes · 126 direct targets</span>
-  <span class="out-key">Cell specificity  </span><span class="out-val">epithelial only (absent in all immune cell types)</span>
+<span class="out-section out-section-cas">▸ Directional Concordance vs. Real Patient Data  <span class="out-dim">(MYC-amplified vs. non-amplified, TCGA PanCancer Atlas)</span></span>
+  <span class="out-key">BRCA  </span><span class="out-hi">45/50 (90.0%)</span>  <span class="out-val">binomial p &lt; 1e-8 · permutation mean 53.8%, p = 0.0000</span>
+  <span class="out-key">COAD  </span><span class="out-hi">36/50 (72.0%)</span>  <span class="out-val">binomial p = 0.0013 · permutation mean 48.4%, p = 0.0000</span>
+  <span class="out-key">STAD  </span><span class="out-hi">42/49 (85.7%)</span>  <span class="out-val">binomial p &lt; 1e-4 · permutation mean 50.4%, p = 0.0000</span>
 
-<span class="out-section out-section-cas">▸ Multi-Evidence Target Rankings  <span class="out-dim">(top genes corroborated across sources)</span></span>
-  <span class="out-dim">Gene    Sources  Net Effect  Key Evidence</span>
-  <span class="out-dim">──────  ───────  ──────────  ────────────────────────────────</span>
-  <span class="out-hi">GATA3  </span><span class="out-val">  3       −2.238 ↓   net · regulators · targets (w=0.9999)</span>
-  <span class="out-val">MYB      3       −1.460 ↓   net · regulators · targets (w=0.9998)</span>
-  <span class="out-val">FOXA1    3       −1.249 ↓   net · regulators · STRING (0.406)</span>
-  <span class="out-val">PGR      3       —          DoRothEA A · regulators · targets (w=0.9994)</span>
+<span class="out-section out-section-cas">▸ Top Predicted Targets  <span class="out-dim">(BRCA, by |effect|, vs. real patient expression)</span></span>
+  <span class="out-dim">Gene     Direction  Amplified z   Non-amp z   Concordant</span>
+  <span class="out-dim">───────  ─────────  ───────────   ─────────   ──────────</span>
+  <span class="out-val">RIOK1  </span><span class="out-hi">  down     +1.246       </span><span class="out-val">−0.253       Yes</span>
+  <span class="out-val">WDR43    </span><span class="out-hi">down     +0.980       </span><span class="out-val">−0.282       Yes</span>
+  <span class="out-val">SNRPD1   </span><span class="out-hi">down     +0.719       </span><span class="out-val">−0.400       Yes</span>
+  <span class="out-dim">  ribosome biogenesis / nucleolar machinery — MYC's best-established transcriptional program</span>
 
-<span class="out-section out-section-cas">▸ Evidence Source Detail</span>
-  <span class="out-key">STRING PPI        </span><span class="out-val">IGF1R=</span><span class="out-hi">0.999</span><span class="out-val">  BRCA1=</span><span class="out-hi">0.999</span><span class="out-val">  PIK3R1=</span><span class="out-hi">0.994</span>  <span class="out-dim">(experimental)</span>
-  <span class="out-key">LINCS L1000       </span><span class="out-val">LTF </span><span class="out-hi">+0.015↑</span><span class="out-val">  MAP7 </span><span class="out-hi">−0.022↓</span><span class="out-val">  TNFSF10 </span><span class="out-hi">+0.015↑</span>
-  <span class="out-key">DepMap CRISPR     </span><span class="out-val">Breast mean Chronos </span><span class="out-hi">−0.318</span><span class="out-val"> (n=53)  pan-cancer mean −0.047</span>
-  <span class="out-key">Super-enhancer    </span><span class="out-val">present in MCF-7 + 2 cell types · </span><span class="out-hi">BRD4-sensitive</span>
-  <span class="out-key">DoRothEA A targets</span><span class="out-val">CCND1 · E2F1 · VEGFA · IGF1 · AKT1 · CDKN1A · RARA</span>
-  <span class="out-key">GREmLN embeddings </span><span class="out-dim">not available in this run (torch checkpoint not loaded)</span>
+<span class="out-section out-section-cas">▸ Robustness Checks</span>
+  <span class="out-key">PAM50 subtype control</span><span class="out-val">LumB-only: 46/50 (92.0%), p = 2.2e-10 — strengthens, not weakens</span>
+  <span class="out-key">Independent cohort   </span><span class="out-val">METABRIC (n=1,664, microarray, no TCGA overlap): 41/47 (87.2%), p &lt; 1e-6</span>
+  <span class="out-key">Panel-size stability </span><span class="out-val">flat across N=25/50/100 (88.0% / 90.0% / 92.0%)</span>
+
+<span class="out-section out-section-cas">▸ Gene-Specificity  <span class="out-dim">(15 additional genes tested)</span></span>
+  <span class="out-val">Proliferation-machinery (E2F3, AURKA, CCNE1, FOXM1, TOP2A...)</span>  <span class="out-hi">validate 68–100%</span>
+  <span class="out-val">Lineage-identity TFs (GATA3, FOXA1, SOX9, ESR1)              </span>  <span class="out-hi">anti-concordant, 0–39%</span>
 
 <div class="out-synthesis out-synthesis-cas">
   <strong>LLM Synthesis (Claude)</strong><br>
-  ESR1 knockdown in breast cancer epithelial cells disrupts a master regulatory hub affecting 3,080 downstream genes — with GATA3, MYB, and FOXA1 as the highest-confidence effectors, each corroborated by three independent evidence sources. STRING confirms direct physical coupling to IGF1R and BRCA1 (score 0.999), while DepMap CRISPR shows strong lineage-selective essentiality in breast (Chronos −0.318 across 53 lines) with minimal pan-cancer toxicity (−0.047), making ESR1 a clean lineage-specific target. Super-enhancer presence in MCF-7 cells and BRD4 sensitivity open a parallel epigenetic intervention angle via JQ1/OTX015. The DoRothEA A-confidence regulon (CCND1, E2F1, AKT1) further positions ESR1 as a master orchestrator of ER+ breast cancer proliferation.
+  CASCADE's MYC knockdown predictions show strong, statistically robust concordance with real patient tumor data across three cancer types, a PAM50 subtype control, and a fully independent cohort (METABRIC) with no data-provenance overlap with CASCADE's own networks — evidence that the specific direction of predicted change, not just candidate plausibility, matches biology. That validation is gene-specific rather than universal: proliferation-machinery genes (E2F3, AURKA, CCNE1, TOP2A, FOXM1) replicate the pattern cleanly, while lineage-identity transcription factors (GATA3, FOXA1, SOX9, ESR1) are anti-concordant — a distinction worth knowing before trusting any single CASCADE query, since the underlying propagation model is far more reliable for proliferation-driving regulators than for lineage-defining ones.
 </div>
       </div>
     </div>
 
     <p style="font-size:12px;color:#bbb;margin-top:10px;margin-bottom:32px;line-height:1.7;font-style:italic;">
-      Biology shown is consistent with published literature: ESR1 master regulator status in ER+ breast cancer (TCGA Breast, <em>Nature</em> 2012; Carroll et al., <em>Science</em> 2006); FOXA1 as pioneer co-regulator (Lupien et al., <em>Cell</em> 2008); BRD4/super-enhancer sensitivity in MCF-7 (Loven et al., <em>Cell</em> 2013). DoRothEA A-confidence targets (CCND1, E2F1, AKT1) are curated from validated ChIP-seq data.
+      This patient-data concordance test — not curated gene-list membership — is the paper's central validation, because CASCADE's core claim is directional (does the predicted gene go up or down), not just plausibility (is it a known cancer gene). A baseline comparison against curated MSigDB gene sets (MYC_TARGETS_V1, E2F_TARGETS) found no significant difference from CASCADE's own predictions (Fisher's exact p = 0.34–0.86), while forcing CASCADE to a naive uniform-direction guess dropped concordance by 14–29 points — confirming its gene-specific direction-calling does real work, without yet establishing it exceeds existing curated knowledge. A single MCP query in Claude Desktop reproduces the predicted-target list (top section above); the concordance rates, PAM50 control, and METABRIC replication come from the paper's separate validation scripts, which pull real patient data from the cBioPortal API and run statistical tests outside of CASCADE itself — not something one live query returns.
     </p>
     <div class="two-col">
       <!-- Left: schematic -->
       <div class="figure-box">
-        <svg viewBox="0 -18 560 408" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 580 250" width="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arr-cas" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
               <path d="M0,0 L0,6 L7,3 z" fill="#1565c0"/>
@@ -906,85 +910,53 @@
           </defs>
 
           <!-- Input box -->
-          <rect x="10" y="161" width="96" height="68" rx="10" fill="white" stroke="#1565c0" stroke-width="2" filter="url(#shadow-sm2)"/>
-          <text x="58" y="187" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Gene</text>
-          <text x="58" y="202" text-anchor="middle" font-size="10" fill="#aaa">+</text>
-          <text x="58" y="217" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Cell Type</text>
+          <rect x="8" y="85" width="94" height="70" rx="10" fill="white" stroke="#1565c0" stroke-width="2" filter="url(#shadow-sm2)"/>
+          <text x="55" y="111" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Gene</text>
+          <text x="55" y="126" text-anchor="middle" font-size="10" fill="#aaa">+</text>
+          <text x="55" y="141" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Perturbation</text>
 
-          <!-- 8 source boxes — evenly spaced vertically in viewBox 390 -->
-          <!-- cy: 24, 67, 110, 153, 195, 238, 281, 348 → top = cy-17 -->
+          <!-- Network Propagation -->
+          <rect x="138" y="15" width="150" height="56" rx="8" fill="white" stroke="#1565c0" stroke-width="1.4" filter="url(#shadow-sm2)"/>
+          <text x="213" y="37" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1565c0">Network Propagation</text>
+          <text x="213" y="53" text-anchor="middle" font-size="9" fill="#aaa">BFS · decay=0.5 · MoA-signed</text>
 
-          <!-- 1: GREmLN Embeddings -->
-          <rect x="148" y="7" width="130" height="34" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" filter="url(#shadow-sm2)"/>
-          <text x="213" y="29" text-anchor="middle" font-size="10" font-weight="700" fill="#1565c0">GREmLN Embeddings</text>
+          <!-- GREmLN Embedding Blend -->
+          <rect x="138" y="91" width="150" height="56" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.4" filter="url(#shadow-sm2)"/>
+          <text x="213" y="113" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1565c0">GREmLN Embedding Blend</text>
+          <text x="213" y="129" text-anchor="middle" font-size="9" fill="#5a8fc2">α = 0.7 cosine similarity</text>
 
-          <!-- 2: Network Propagation -->
-          <rect x="148" y="53" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="75" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Network Propagation</text>
+          <!-- Real Patient Data -->
+          <rect x="326" y="150" width="118" height="60" rx="8" fill="white" stroke="#90a4ae" stroke-width="1.4" filter="url(#shadow-sm2)"/>
+          <text x="385" y="172" text-anchor="middle" font-size="10.5" font-weight="700" fill="#555">Real Patient Data</text>
+          <text x="385" y="188" text-anchor="middle" font-size="9" fill="#999">TCGA + METABRIC</text>
+          <text x="385" y="201" text-anchor="middle" font-size="9" fill="#999">amp vs. non-amp (cBioPortal)</text>
 
-          <!-- 3: STRING PPI -->
-          <rect x="148" y="99" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="121" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">STRING PPI</text>
+          <!-- Predicted Targets -->
+          <rect x="326" y="53" width="118" height="56" rx="8" fill="white" stroke="#1565c0" stroke-width="1.6" filter="url(#shadow-sm2)"/>
+          <text x="385" y="75" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1565c0">Predicted Targets</text>
+          <text x="385" y="91" text-anchor="middle" font-size="9" fill="#aaa">top-50 · ↑/↓ direction</text>
 
-          <!-- 4: LINCS L1000 -->
-          <rect x="148" y="145" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="167" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">LINCS L1000</text>
+          <!-- Input → propagation / embedding -->
+          <line x1="102" y1="110" x2="137" y2="43"  stroke="#1565c0" stroke-width="1.5" opacity="0.8" marker-end="url(#arr-cas)"/>
+          <line x1="102" y1="120" x2="137" y2="119" stroke="#1565c0" stroke-width="1.5" opacity="0.8" marker-end="url(#arr-cas)"/>
 
-          <!-- 5: DoRothEA -->
-          <rect x="148" y="191" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="213" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DoRothEA TF Regulons</text>
+          <!-- Propagation / embedding → predicted targets -->
+          <line x1="288" y1="43"  x2="325" y2="72"  stroke="#1565c0" stroke-width="1.6" marker-end="url(#arr-cas)"/>
+          <line x1="288" y1="119" x2="325" y2="92"  stroke="#1565c0" stroke-width="1.6" marker-end="url(#arr-cas)"/>
 
-          <!-- 6: DepMap CRISPR -->
-          <rect x="148" y="237" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="259" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">DepMap CRISPR</text>
+          <!-- Predicted targets + patient data → concordance test -->
+          <line x1="444" y1="81"  x2="473" y2="118" stroke="#1565c0" stroke-width="1.8" marker-end="url(#arr-cas)"/>
+          <line x1="444" y1="180" x2="473" y2="162" stroke="#90a4ae" stroke-width="1.8" marker-end="url(#arr-cas-sm)"/>
 
-          <!-- 7: Super-enhancers -->
-          <rect x="148" y="283" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="305" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">Super-enhancers</text>
-
-          <!-- 8: cBioPortal -->
-          <rect x="148" y="329" width="130" height="34" rx="7" fill="white" stroke="#1565c0" stroke-width="1.3" filter="url(#shadow-sm2)"/>
-          <text x="213" y="351" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">cBioPortal</text>
-
-          <!-- Input → sources (fan out lines) -->
-          <line x1="106" y1="195" x2="147" y2="24"  stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="195" x2="147" y2="70"  stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="195" x2="147" y2="116" stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="195" x2="147" y2="162" stroke="#1565c0" stroke-width="1.5" opacity="0.7"  marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="195" x2="147" y2="195" stroke="#1565c0" stroke-width="2"               marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="195" x2="147" y2="254" stroke="#1565c0" stroke-width="1.5" opacity="0.7"  marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="195" x2="147" y2="300" stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
-          <line x1="106" y1="195" x2="147" y2="346" stroke="#1565c0" stroke-width="1"   opacity="0.45" marker-end="url(#arr-cas)"/>
-
-          <!-- Sources → synthesis (fan in lines) -->
-          <line x1="278" y1="24"  x2="370" y2="185" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="70"  x2="370" y2="188" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="116" x2="370" y2="191" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="162" x2="370" y2="194" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="195" x2="370" y2="195" stroke="#90a4ae" stroke-width="2"   marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="254" x2="370" y2="198" stroke="#90a4ae" stroke-width="1.2" marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="300" x2="370" y2="201" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
-          <line x1="278" y1="346" x2="370" y2="204" stroke="#90a4ae" stroke-width="1"   marker-end="url(#arr-cas-sm)"/>
-
-          <!-- LangGraph DAG wrapper -->
-          <rect x="136" y="0" width="228" height="390" rx="10" fill="none" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="5,3" opacity="0.3"/>
-          <text x="250" y="-5" text-anchor="middle" font-size="10" font-weight="700" fill="#1565c0" opacity="0.7" letter-spacing="0.5">LANGGRAPH DAG</text>
-
-          <!-- Synthesis box -->
-          <rect x="372" y="156" width="108" height="78" rx="10" fill="white" stroke="#1565c0" stroke-width="2.5" filter="url(#shadow-cas)"/>
-          <text x="426" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">LLM</text>
-          <text x="426" y="201" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">Synthesis</text>
-          <text x="426" y="220" text-anchor="middle" font-size="9" fill="#aaa">Claude</text>
-
-          <!-- Arrow to output -->
-          <line x1="480" y1="195" x2="508" y2="195" stroke="#1565c0" stroke-width="2.5" marker-end="url(#arr-cas)"/>
-
-          <!-- Output box -->
-          <rect x="510" y="156" width="44" height="78" rx="10" fill="#1565c0" filter="url(#shadow-sm2)"/>
-          <text x="532" y="187" text-anchor="middle" font-size="9.5" font-weight="700" fill="white">Target</text>
-          <text x="532" y="203" text-anchor="middle" font-size="9.5" fill="#bbdefb">Report</text>
+          <!-- Concordance Test (terminal output) -->
+          <rect x="475" y="95" width="97" height="90" rx="10" fill="#1565c0" filter="url(#shadow-cas)"/>
+          <text x="523" y="118" text-anchor="middle" font-size="10.5" font-weight="700" fill="white">Concordance</text>
+          <text x="523" y="133" text-anchor="middle" font-size="10.5" font-weight="700" fill="white">Test</text>
+          <text x="523" y="150" text-anchor="middle" font-size="8.5" fill="#bbdefb">binomial + permutation</text>
+          <text x="523" y="163" text-anchor="middle" font-size="8.5" fill="#bbdefb">(n=1,000 draws)</text>
+          <text x="523" y="177" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ffd080">90.0% BRCA</text>
         </svg>
-        <div class="fig-caption">Seven independent evidence sources — led by GREmLN embeddings — orchestrated by a LangGraph DAG, fanning into a single LLM synthesis node to produce ranked therapeutic target reports.</div>
+        <div class="fig-caption">CASCADE's network-propagation and GREmLN-embedding-blended predictions are tested for directional concordance against real patient copy-number/expression data — the validation methodology this paper introduces.</div>
       </div>
 
       <!-- Right: info -->
@@ -1000,7 +972,7 @@
           <li><span class="feat-dot dot-cas"></span>cBioPortal somatic mutation frequency</li>
         </ul>
         <div class="pills">
-          <span class="pill pill-cas">v1.0.1 stable</span>
+          <span class="pill pill-cas">v1.3.0 stable</span>
           <span class="pill">Python</span>
           <span class="pill">LangGraph</span>
           <span class="pill">MCP</span>
@@ -1023,7 +995,7 @@
     <div class="section-eyebrow" style="color:#9c7fcc;margin-bottom:10px;">Try It</div>
     <h2 style="font-size:32px;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px;">Run Your Gene in Claude Desktop</h2>
     <p style="font-size:17px;color:var(--mid);max-width:620px;margin-bottom:24px;line-height:1.7;">
-      Both tools ship as MCP servers — connect them to Claude Desktop and run full regulatory and perturbation analyses in conversation, no code required. One question is all it takes.
+      All three ship as MCP servers — connect them to Claude Desktop and run full regulatory and perturbation analyses in conversation, no code required. One question is all it takes.
     </p>
     <div style="background:#1a1a2e;border-radius:10px;padding:14px 22px;max-width:620px;margin-bottom:32px;font-family:'SF Mono','Fira Code',monospace;font-size:13.5px;color:#7c8cf8;letter-spacing:0.2px;">
       "Analyze ESR1 in breast cancer epithelial cells and identify the top therapeutic targets"
@@ -1033,7 +1005,7 @@
         <div class="try-step-num">1</div>
         <div>
           <div class="try-step-title">Install the tool</div>
-          <div class="try-step-body">Clone RegNetAgents or CASCADE from GitHub and follow the setup instructions in the README. Requires Python and a Claude API key.</div>
+          <div class="try-step-body">Clone RegNetAgents, CASCADE, or Orchestra from GitHub and follow the setup instructions in the README. Requires Python and a Claude API key.</div>
         </div>
       </div>
       <div class="try-step">
@@ -1054,12 +1026,13 @@
     <div style="display:flex;gap:14px;flex-wrap:wrap;">
       <a href="https://github.com/jab57/RegNetAgents" target="_blank" class="btn-rna">RegNetAgents on GitHub →</a>
       <a href="https://github.com/jab57/CASCADE" target="_blank" class="btn-cas">CASCADE on GitHub →</a>
+      <a href="https://github.com/jab57/Orchestra" target="_blank" class="btn-orch">Orchestra on GitHub →</a>
     </div>
   </div>
 </div>
 
 <!-- ORCHESTRA TEASER -->
-<div class="teaser-section">
+<div class="teaser-section" id="orchestra">
   <div class="teaser-inner">
     <h3>Project 03</h3>
     <div class="teaser-card">
@@ -1071,7 +1044,51 @@
         </div>
       </div>
 
+      <!-- Sample output -->
+      <p style="font-size:15px;color:#555;margin-bottom:18px;line-height:1.7;">Here's what Orchestra produced screening a 24-gene methylation-silenced panel against the TCGA CESC regulatory network — composing RegNetAgents' master-regulator inference with an orthogonal TCGA methylation-correlation check into one causal chain report. This exact run is the basis of a published preprint:</p>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;margin-bottom:18px;padding:14px 20px;background:#f2ecfa;border-left:3px solid #9c7fcc;border-radius:0 8px 8px 0;font-size:13.5px;color:#555;">
+        <span><strong style="color:#9c7fcc;">DACH1</strong> — top-coverage master regulator (4/23 genes, enrichment 8.42, p-adj = 2.82e-3)</span>
+        <span><strong style="color:#9c7fcc;">3 of 4</strong> targets show significant inverse methylation correlation (p &lt; 7e-5)</span>
+        <span><strong style="color:#9c7fcc;">0</strong> prior PubMed records in cervical or head/neck cancer — a novel finding</span>
+        <span><strong style="color:#9c7fcc;">Locus-specific</strong> — confirmed via partial correlation controlling for genome-wide methylation burden</span>
+      </div>
+      <div class="output-block">
+        <div class="output-header">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <span class="output-title">orchestra — DACH1 master regulator screen · TCGA CESC</span>
+          <span class="output-label output-label-orch">Sample Output</span>
+        </div>
+        <div class="output-body">
+<span class="out-query">$ query: gene_panel=24_genes(methylation-silenced)  network=TCGA_CESC_ARACNe  tools=RegNetAgents+methylation_correlation</span>
+
+<span class="out-section out-section-orch">▸ Step 1 — RegNetAgents: Master Regulator Enrichment  <span class="out-dim">(ARACNe · 616 regulators, BH-corrected)</span></span>
+  <span class="out-key">Top driver        </span><span class="out-hi">DACH1</span>  <span class="out-val">coverage 4/23 genes · enrichment 8.42 · p-adj 2.82e-3</span>
+  <span class="out-key">Targets           </span><span class="out-val">CADM1 · EDNRB · ESR1 · SLIT2</span>
+  <span class="out-key">Literature novelty</span><span class="out-val">0 CESC records · 0 HNSC records  </span><span class="out-dim">(AR, for comparison: 64 / 29 — established)</span>
+
+<span class="out-section out-section-orch">▸ Step 2 — Orthogonal Methylation Correlation  <span class="out-dim">(TCGA CESC, squamous-only, n=253)</span></span>
+  <span class="out-val">CADM1  </span><span class="out-hi">ρ=-0.249</span><span class="out-val">  p=6.38e-5   inverse — supports hypothesis</span>
+  <span class="out-val">ESR1   </span><span class="out-hi">ρ=-0.248</span><span class="out-val">  p=6.60e-5   inverse — supports hypothesis</span>
+  <span class="out-val">SLIT2  </span><span class="out-hi">ρ=-0.263</span><span class="out-val">  p=2.35e-5   inverse — supports hypothesis</span>
+  <span class="out-val">EDNRB  </span><span class="out-val">ρ=-0.157</span><span class="out-val">  p=1.23e-2   below effect threshold (|ρ| &lt; 0.2)</span>
+
+<span class="out-section out-section-orch">▸ Step 3 — Robustness Checks</span>
+  <span class="out-key">Methylation burden control</span><span class="out-val">partial ρ controlling for an 8-marker burden index — associations remain locus-specific, not genome-wide hypermethylation</span>
+  <span class="out-key">Negative control (SOX8)   </span><span class="out-val">next-most-comparable driver — identical test against its own predicted targets shows no supporting pattern</span>
+
+<div class="out-synthesis out-synthesis-orch">
+  <strong>LLM Synthesis (Claude)</strong><br>
+  DACH1 emerges as a network-central master regulator with zero prior literature in cervical or head/neck squamous carcinoma — RegNetAgents flags it as the top-coverage driver against a 24-gene methylation-silenced panel. Orchestra's orthogonal methylation-correlation check adds independent molecular support: three of four predicted targets (CADM1, ESR1, SLIT2) show a significant inverse relationship between DACH1 expression and target promoter methylation (|ρ| = 0.25–0.26, p &lt; 7e-5, n = 253), robust to partial correlation against a genome-wide methylation-burden index — ruling out a generic hypermethylation-phenotype explanation. A negative-control test on SOX8, the next most comparable candidate driver, shows no equivalent pattern at its own predicted targets, indicating this signal is specific to DACH1 rather than a generic property of top-ranked network drivers.
+</div>
+        </div>
+      </div>
+
+      <p style="font-size:12px;color:#bbb;margin-top:10px;margin-bottom:8px;line-height:1.7;font-style:italic;">
+        This analysis is the basis of a preprint (not yet peer-reviewed): Bird, J. (2026). DACH1 expression is inversely associated with promoter methylation of CADM1, ESR1, and SLIT2 in TCGA cervical squamous carcinoma: a network-based candidate regulator discovery. Research Square. <a href="https://doi.org/10.21203/rs.3.rs-10386608/v1" target="_blank" style="color:#9c7fcc;">doi:10.21203/rs.3.rs-10386608/v1</a>
+      </p>
+
       <!-- Orchestra interaction diagram -->
+      <p style="font-size:12px;color:#bbb;margin-bottom:10px;line-height:1.6;">Orchestra's general architecture — composing RegNetAgents and CASCADE together for causal-chain queries where both are relevant. The DACH1 finding above used RegNetAgents plus the methylation-correlation check only; CASCADE's five standard evidence sources are documented in the JOSS software paper as available for other queries.</p>
       <svg viewBox="0 0 580 235" width="100%" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <marker id="arr-orch-dark" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
@@ -1147,15 +1164,17 @@
         <text x="524" y="214" text-anchor="middle" font-size="9" fill="#555">Report</text>
       </svg>
 
-      <div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
         <a href="https://github.com/jab57/Orchestra" target="_blank" class="btn-orch">Orchestra on GitHub →</a>
+        <span class="pill" style="background:#f2ecfa;color:#9c7fcc;">v1.0.0 stable</span>
+        <a href="https://doi.org/10.5281/zenodo.21192969" target="_blank" class="link-secondary">Zenodo DOI →</a>
       </div>
     </div>
   </div>
 </div>
 
 <!-- PUBLICATIONS -->
-<div class="pubs-section">
+<div class="pubs-section" id="publications">
   <div class="pubs-inner">
     <h3>Publications</h3>
     <div class="pub-item">
